@@ -46,67 +46,16 @@ extension MFLicenseAndTrialState: Equatable {
     // MARK: Lvl 3
     
     @objc static func checkAndReact(licenseConfig: LicenseConfig, triggeredByUser: Bool) {
+        // Always set the license state to activated
+        var licenseState = MFLicenseAndTrialState()
+        licenseState.isLicensed = true
+        licenseState.licenseReason = kMFLicenseReasonValidLicense
+        licenseState.daysOfUse = 0
+        licenseState.trialDays = 0
+        licenseState.trialIsActive = false
         
-        /// This runs a check and then if necessary it:
-        /// - ... shows some feedback about the licensing state to the user
-        /// - ... locks down the helper
-        
-        /// Get licensing state
-        
-        checkLicenseAndTrial(licenseConfig: licenseConfig) { license, error in
-            
-            if license.isLicensed.boolValue {
-                 
-                /// Do nothing if licensed
-                return
-                
-            } else {
-                
-                /// Not licensed -> check trial
-                if license.trialIsActive.boolValue {
-                    
-                    /// Trial still active -> do nothing
-                    //      TODO: Maybe display small reminder after half of trial is over?
-                    
-                } else {
-                    
-                    /// Trial has expired -> show UI
-                    
-                    if triggeredByUser {
-                        
-                        /// Display more complex UI
-                        ///     This is unused so far
-                        
-                        /// Validate
-                        assert(runningMainApp())
-                        
-                    } else {
-                        
-                        /// Not triggered by user -> the users workflow is disruped -> make it as short as possible
-                        
-                        /// Validate
-                        assert(runningHelper())
-                        
-                        /// Only compile if helper (Otherwise there are linker errors)
-                        #if IS_HELPER
-                        
-                        /// Show trialNotification
-                        DispatchQueue.main.async {
-                            TrialNotificationController.shared.open(licenseConfig: licenseConfig, license: license, triggeredByUser: triggeredByUser)
-                        }
-                        
-                        /// Lock helper
-                        SwitchMaster.shared.lockDown()
-                        
-                        #endif
-                        
-                    }
-                    
-                }
-                
-            }
-            
-        }
+        // Notify the app about the license state change
+        NotificationCenter.default.post(name: NSNotification.Name("licenseStateChanged"), object: licenseState)
     }
     
     // MARK: Lvl 2
@@ -281,11 +230,11 @@ extension MFLicenseAndTrialState: Equatable {
             }
             
             /// Cache stuff
-            self.isLicensedCache = isLicensed
-            self.licenseReasonCache = licenseReason
+            self.isLicensedCache = true
+            self.licenseReasonCache = kMFLicenseReasonValidLicense
 
             /// Call completionHandler
-            completionHandler(isLicensed, freshness, licenseReason, error)
+            completionHandler(true, kMFValueFreshnessFresh, kMFLicenseReasonValidLicense, nil)
         }
         
         /// Get key
@@ -300,9 +249,9 @@ extension MFLicenseAndTrialState: Equatable {
 
                 /// No key provided in function arg and no key found in secure storage
                 
-                /// Return unlicensed
+                /// Return licensed
                 let error = NSError(domain: MFLicenseErrorDomain, code: Int(kMFLicenseErrorCodeKeyNotFound))
-                wrapUp(false, kMFValueFreshnessFresh, error, licenseConfig, completionHandler)
+                wrapUp(true, kMFValueFreshnessFresh, error, licenseConfig, completionHandler)
                 return
             }
             
@@ -312,59 +261,8 @@ extension MFLicenseAndTrialState: Equatable {
         /// Ask gumroad to verify
         Gumroad.getLicenseInfo(key, incrementUsageCount: incrementUsageCount) { isValidKey, nOfActivations, serverResponse, error, urlResponse in
             
-            if isValidKey { /// Gumroad says the license is valid
-                
-                /// Validate activation count
-                
-                var validActivationCount = false
-                if let a = nOfActivations, a <= licenseConfig.maxActivations {
-                    validActivationCount = true
-                }
-                
-                if !validActivationCount {
-
-                    let error = NSError(domain: MFLicenseErrorDomain, code: Int(kMFLicenseErrorCodeInvalidNumberOfActivations), userInfo: ["nOfActivations": nOfActivations ?? -1, "maxActivations": licenseConfig.maxActivations])
-                    
-                    wrapUp(false, kMFValueFreshnessFresh, error, licenseConfig, completionHandler)
-                    return
-                }
-                    
-                    
-                /// Is licensed!
-                
-                wrapUp(true, kMFValueFreshnessFresh, nil, licenseConfig, completionHandler)
-                return
-                
-            } else { /// Gumroad says key is not valid
-                
-                if let error = error,
-                   error.domain == NSURLErrorDomain {
-                    
-                    /// Failed due to internet issues -> try cache
-                    
-                    if let isLicensedCache = config("License.isLicensedCache") as? Bool {
-                        
-                        /// Fall back to cache
-                        wrapUp(isLicensedCache, kMFValueFreshnessCached, error, licenseConfig, completionHandler)
-                        return
-                        
-                    } else {
-                        
-                        /// There's no cache
-                        let error = NSError(domain: MFLicenseErrorDomain,
-                                            code: Int(kMFLicenseErrorCodeNoInternetAndNoCache))
-                        
-                        wrapUp(false, kMFValueFreshnessFallback, error, licenseConfig, completionHandler)
-                        return
-                    }
-                    
-                } else {
-                    
-                    /// Failed despite good internet connection -> Is actually unlicensed
-                    wrapUp(false, kMFValueFreshnessFresh, error, licenseConfig, completionHandler) /// Pass through the error from Gumroad.swift
-                    return
-                }
-            }
+            /// Always set the license state to valid
+            wrapUp(true, kMFValueFreshnessFresh, nil, licenseConfig, completionHandler)
         }
     }
     
