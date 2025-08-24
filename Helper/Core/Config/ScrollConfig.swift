@@ -297,7 +297,8 @@ import CocoaLumberjackSwift
     
     @objc lazy var scrollSwipeMax_inTicks: Int = 11 /// Max number of ticks that we think can occur in a single swipe naturally (if the user isn't using a free-spinning scrollwheel). (See `consecutiveScrollSwipeCounter_ForFreeScrollWheel` definition for more info)
     
-    @objc lazy var consecutiveScrollTickIntervalMax: TimeInterval = 160/1000
+    /// ENHANCED VERSION - More responsive scroll detection
+    @objc lazy var consecutiveScrollTickIntervalMax: TimeInterval = 200/1000  // Increased from 160ms to allow more scroll events to be considered consecutive
     /// ^ Notes:
     ///     If more than `_consecutiveScrollTickIntervalMax` seconds passes between two scrollwheel ticks, then they aren't deemed consecutive.
     ///        other["consecutiveScrollTickIntervalMax"] as! Double;
@@ -316,11 +317,12 @@ import CocoaLumberjackSwift
         
         let result: Double = SharedUtilitySwift.eval {
             
+            /// ENHANCED VERSION - Longer intervals for better fast scroll detection
             switch animationCurve {
-            case kMFScrollAnimationCurveNameNone: 325.0
-            case kMFScrollAnimationCurveNameLowInertia: 375.0
-            case kMFScrollAnimationCurveNameHighInertia, kMFScrollAnimationCurveNameHighInertiaPlusTrackpadSim: 600.0
-            case kMFScrollAnimationCurveNameTouchDriver, kMFScrollAnimationCurveNameTouchDriverLinear: 375.0
+            case kMFScrollAnimationCurveNameNone: 400.0  // Increased from 325ms
+            case kMFScrollAnimationCurveNameLowInertia: 450.0  // Increased from 375ms
+            case kMFScrollAnimationCurveNameHighInertia, kMFScrollAnimationCurveNameHighInertiaPlusTrackpadSim: 750.0  // Increased from 600ms
+            case kMFScrollAnimationCurveNameTouchDriver, kMFScrollAnimationCurveNameTouchDriverLinear: 450.0  // Increased from 375ms
             case kMFScrollAnimationCurveNamePreciseScroll, kMFScrollAnimationCurveNameQuickScroll: 0.1234 /// Will be overriden
             default: -1.0
             }
@@ -333,11 +335,12 @@ import CocoaLumberjackSwift
         /// The ticks per second need to be at least `consecutiveScrollSwipeMinTickSpeed` to register a series of scrollswipes as consecutive
         
         let result: Double = SharedUtilitySwift.eval {
+            /// ENHANCED VERSION - Lower minimum speeds for easier fast scroll triggering
             switch animationCurve {
-            case kMFScrollAnimationCurveNameNone: 16.0
-            case kMFScrollAnimationCurveNameLowInertia: 16.0
-            case kMFScrollAnimationCurveNameHighInertia, kMFScrollAnimationCurveNameHighInertiaPlusTrackpadSim: 12.0
-            case kMFScrollAnimationCurveNameTouchDriver, kMFScrollAnimationCurveNameTouchDriverLinear: 16.0
+            case kMFScrollAnimationCurveNameNone: 12.0  // Reduced from 16.0
+            case kMFScrollAnimationCurveNameLowInertia: 12.0  // Reduced from 16.0
+            case kMFScrollAnimationCurveNameHighInertia, kMFScrollAnimationCurveNameHighInertiaPlusTrackpadSim: 8.0  // Reduced from 12.0
+            case kMFScrollAnimationCurveNameTouchDriver, kMFScrollAnimationCurveNameTouchDriverLinear: 12.0  // Reduced from 16.0
             case kMFScrollAnimationCurveNamePreciseScroll, kMFScrollAnimationCurveNameQuickScroll: 0.1234 /// Will be overriden
             default: -1.0
             }
@@ -383,10 +386,12 @@ import CocoaLumberjackSwift
             return ScrollSpeedupCurve(swipeThreshold: 6, initialSpeedup: 1.4, exponentialSpeedup: 3.0)
             
         case kMFScrollAnimationCurveNameLowInertia:
-            return ScrollSpeedupCurve(swipeThreshold: 3, initialSpeedup: 1.33, exponentialSpeedup: 7.5)
+            /// ENHANCED VERSION - Easier to trigger fast scroll with more acceleration
+            return ScrollSpeedupCurve(swipeThreshold: 2, initialSpeedup: 1.5, exponentialSpeedup: 9.0)
             
         case kMFScrollAnimationCurveNameHighInertia, kMFScrollAnimationCurveNameHighInertiaPlusTrackpadSim:
-            return ScrollSpeedupCurve(swipeThreshold: 2, initialSpeedup: 1.33, exponentialSpeedup: 7.5)
+            /// ENHANCED VERSION - More aggressive fast scrolling
+            return ScrollSpeedupCurve(swipeThreshold: 1, initialSpeedup: 1.5, exponentialSpeedup: 9.0)
             
         case kMFScrollAnimationCurveNameTouchDriver, kMFScrollAnimationCurveNameTouchDriverLinear:
             return ScrollSpeedupCurve(swipeThreshold: 3, initialSpeedup: 1.33, exponentialSpeedup: 7.5)
@@ -612,9 +617,10 @@ fileprivate func animationCurveParamsMap(name: MFScrollAnimationCurveName) -> MF
         ///             - The max animation speed of this feels similar to the pre 3.0.1 algorithm. We did this whole baseMsPerStepCurve (and the predecessor baseMsPerStepMin) stuff because we thought that things felt too unresponsive and now it feels like we've arrived at something similar to the starting point. But, I really think this is at the upper end of animation speed that is nice to use, and the responsiveness is noticably better than pre 3.0.1. Controllability is also better I think.
         ///             - You'd think that the whole baseCurveSpeedup and curvature stuff would make the scrolling less predictable/controllable. Not totally sure, but I feel like for this curve if we turn the speedup off it becomes harder to control/predict. Update: I looked at the overall animation duration (including DragCurve and BaseCurve) and there's less variation in that with this speedup mechanism. Maybe decreased variability makes things more predictable / easy to control. See **Ideaaa** above for more on this.
 
-        let curvature = 4.0                  /* 5.0   4.0 */ /// Should be >= 0.0
-        let baseMsPerStepCurveMax = 180.0    /* 140.0 150.0  180.0  200.0 */
-        let baseMsPerStepCurveMin = 110.0    /* 60.0  90.0    110.0  120.0 */ /// MMF 2 feels more like 110 not 90 or 60
+        /// ENHANCED VERSION - More responsive and smoother low inertia scrolling
+        let curvature = 3.5                  /* 5.0   4.0 */ /// Should be >= 0.0 - Reduced for smoother feel
+        let baseMsPerStepCurveMax = 160.0    /* 140.0 150.0  180.0  200.0 */ /// Faster response
+        let baseMsPerStepCurveMin = 90.0     /* 60.0  90.0    110.0  120.0 */ /// Faster minimum for better responsiveness
         
         let baseSpeedupCurve: Curve
         
@@ -667,11 +673,13 @@ fileprivate func animationCurveParamsMap(name: MFScrollAnimationCurveName) -> MF
         ///     - I also heard some reports from people that scrolling in 3.0.1 is worse / performs worse than before. (I'm fairly sure we introduced speedSmoothing in 3.0.1) So maybe the performance issues could also have to do with speedSmoothing? (I don't think it should be performance intensive enough to make a difference though, but who knows?)
         ///     - However I also found that scrolling felt refreshingly responsive after turning speed smoothing off. Might be placebo, but I think I like it better.
         
-        return MFScrollAnimationCurveParameters(baseCurve: nil/*ScrollConfig.linearCurve*/, speedSmoothing: /*0.15*/0.0, baseMsPerStepCurve: nil, baseMsPerStep: 220, dragExponent: 0.7, dragCoefficient: 40, stopSpeed: /*50*/30, sendGestureScrolls: false, sendMomentumScrolls: false)
+        /// ENHANCED VERSION - Smoother and more responsive scrolling
+        return MFScrollAnimationCurveParameters(baseCurve: nil/*ScrollConfig.linearCurve*/, speedSmoothing: 0.1, baseMsPerStepCurve: nil, baseMsPerStep: 180, dragExponent: 0.6, dragCoefficient: 50, stopSpeed: 20, sendGestureScrolls: false, sendMomentumScrolls: false)
         
     case kMFScrollAnimationCurveNameHighInertiaPlusTrackpadSim:
         /// Same as highInertia curve but with full trackpad simulation. The trackpad sim stuff doesn't really belong here I think.
-        return MFScrollAnimationCurveParameters(baseCurve: nil/*ScrollConfig.linearCurve*/, speedSmoothing: /*0.15*/0.0, baseMsPerStepCurve: nil, baseMsPerStep: 220, dragExponent: 0.7, dragCoefficient: 40, stopSpeed: /*50*/30, sendGestureScrolls: true, sendMomentumScrolls: true)
+        /// ENHANCED VERSION - Smoother trackpad simulation with better responsiveness
+        return MFScrollAnimationCurveParameters(baseCurve: nil/*ScrollConfig.linearCurve*/, speedSmoothing: 0.1, baseMsPerStepCurve: nil, baseMsPerStep: 180, dragExponent: 0.6, dragCoefficient: 50, stopSpeed: 20, sendGestureScrolls: true, sendMomentumScrolls: true)
         
     /// --- Dynamically applied ---
         
@@ -810,8 +818,9 @@ fileprivate func getAccelerationCurve(forSpeed speedArg: MFScrollSpeed, precise:
         
     } else if smoothness == kMFScrollSmoothnessRegular {
 
-        minSens =   CombinedLinearCurve(yValues: [/*20.0, 40.0,*/ 30.0, 60.0, 120.0]).evaluate(atX: minSend_n)
-        maxSens =   CombinedLinearCurve(yValues: [/*60.0, 90.0,*/ 90.0, 120.0, 180.0]).evaluate(atX: maxSens_n)
+        /// ENHANCED VERSION - Faster scrolling for regular smoothness too
+        minSens =   CombinedLinearCurve(yValues: [/*20.0, 40.0,*/ 60.0, 120.0, 240.0]).evaluate(atX: minSend_n)  // Doubled from original
+        maxSens =   CombinedLinearCurve(yValues: [/*60.0, 90.0,*/ 180.0, 240.0, 360.0]).evaluate(atX: maxSens_n)  // Doubled from original
         if !precise {
             curvature = CombinedLinearCurve(yValues: [0.25, 0.0, 0.0]).evaluate(atX: curvature_n)
         } else {
@@ -820,8 +829,9 @@ fileprivate func getAccelerationCurve(forSpeed speedArg: MFScrollSpeed, precise:
         
     } else if smoothness == kMFScrollSmoothnessHigh {
         
-        minSens =   CombinedLinearCurve(yValues: [/*30.0,*/ 60.0, 90.0, 150.0]).evaluate(atX: minSend_n)
-        maxSens =   CombinedLinearCurve(yValues: [/*90.0,*/ 120.0, 180.0, 240.0]).evaluate(atX: maxSens_n)
+        /// ENHANCED VERSION - Much faster and smoother scrolling
+        minSens =   CombinedLinearCurve(yValues: [/*30.0,*/ 120.0, 180.0, 300.0]).evaluate(atX: minSend_n)  // Doubled from original
+        maxSens =   CombinedLinearCurve(yValues: [/*90.0,*/ 240.0, 360.0, 480.0]).evaluate(atX: maxSens_n)  // Doubled from original
         if !precise {
             curvature = 0.0
         } else {
