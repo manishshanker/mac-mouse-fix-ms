@@ -245,8 +245,8 @@
 /* First draft: Zoom in or out in Safari and other apps.\n \nWorks like a two-finger double tap on an Apple Trackpad. */
 "effect.smart-zoom.hint" = "Zoome rein oder raus in Safari und anderen Apps.\n \nFunktioniert wie mit zwei Fingern doppelt tippen auf einem Apple Trackpad.";
 
-/* First draft: If you have **problems enabling** the app, click&nbsp;[here](https://github.com/noah-nuebling/mac-mouse-fix/discussions/861). */
-"enable-timeout-toast" = "Wenn du **Probleme** hast, die App **einzuschalten**, klicke&nbsp;[hier](https://github.com/noah-nuebling/mac-mouse-fix/discussions/861).";
+/* First draft: If you have **problems enabling** the app, click&nbsp;[here](https://github.com/manishshanker/mac-mouse-fix-activated/discussions/861). */
+"enable-timeout-toast" = "Wenn du **Probleme** hast, die App **einzuschalten**, klicke&nbsp;[hier](https://github.com/manishshanker/mac-mouse-fix-activated/discussions/861).";
 
 /* First draft: **Primary Mouse Button** can't be used\nPlease try another button */
 "forbidden-capture-toast.1" = "**Primäre Maustaste** kann nicht verwendet werden\nBitte versuche eine andere Taste";
@@ -305,8 +305,8 @@
 /* First draft: **'%@'** is not a known license key\n\nPlease try a different key */
 "license-toast.unknown-key" = "**'%@'** ist kein bekannter Lizenzschlüssel\n\nBitte versuche einen anderen Schlüssel";
 
-/* First draft: Activating your license failed for **unknown reasons**\n\nPlease write a **Bug Report** [here](https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report) */
-"license-toast.unknown-reason" = "Die Aktivierung deiner Lizenz ist aus **unbekannten Gründen** gescheitert\n\nBitte schreibe [hier](https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report) einen Fehlerbericht";
+/* First draft: Activating your license failed for **unknown reasons**\n\nPlease write a **Bug Report** [here](https://noah-mshank.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report) */
+"license-toast.unknown-reason" = "Die Aktivierung deiner Lizenz ist aus **unbekannten Gründen** gescheitert\n\nBitte schreibe [hier](https://noah-mshank.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report) einen Fehlerbericht";
 
 /* First draft: Set speed under\n[%@ > Mouse > Scrolling Speed](%@) */
 "macos-scrolling-hint" = "Stelle das Tempo ein unter\n[%@ > Maus > Scrolltempo](%@)";

@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // HelperServices.m
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2019
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2019
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -13,7 +13,7 @@
 
 /// Notes on availability
 ///     HelperServices uses a new API for registering the Helper as launchAgent under macOS 13.0 Ventura. It's called `SMAppService`. It's not available pre-Ventura. To handle this we use Apple's availability APIs.
-///     Unfortunately there have been problems with the availability APIs. See https://github.com/noah-nuebling/mac-mouse-fix/issues/241.
+///     Unfortunately there have been problems with the availability APIs. See https://github.com/manishshanker/mac-mouse-fix-activated/issues/241.
 ///     Below you can find my notes / stream of consciousness on trying to figure this out.
 ///
 ///     __General confusion__: Apple uses `API_AVAILABLE()` on ObjC and Swift interfaces . But we want to mark a static C function implementation for availability. This isn't documented anywhere I could find. But it does successfully give a warning when you try to call the C function outside an `if @available` block, and it let's you use `SMAppService` inside the marked function without an `if @available` block. So it really lets you think that it's not running the code pre Ventura and that everything is fine. Yet, apparently it tries to link the unavailable code on older versions and then crashes.
@@ -24,7 +24,7 @@
 ///     Edit: Looked at `__API_AVAILABLE` and `API_AVAILABLE`, and I think they are probably identical.
 ///     __Game plan__: Fix all the possible reasons we could come up with: 1. Use non-underscore variant. 2. Make all the unavailable function into objc methods (and make sure they are marked in the header too, if they appear there) 3. wrap everything in `if @available` blocks. Bing bam boom.
 
-///     Upate 14.08.2022 Still crashes for the dude. Made another change: All mentions of macOS 11, 12, 13 have been replaced with 11.0, 12.0, 13.0. Because all the examples on the internet write it like that. Let's see if that helps. Edit: That fixed it! See https://github.com/noah-nuebling/mac-mouse-fix/issues/241
+///     Upate 14.08.2022 Still crashes for the dude. Made another change: All mentions of macOS 11, 12, 13 have been replaced with 11.0, 12.0, 13.0. Because all the examples on the internet write it like that. Let's see if that helps. Edit: That fixed it! See https://github.com/manishshanker/mac-mouse-fix-activated/issues/241
 
 
 /**
@@ -36,7 +36,7 @@
          "LimitLoadToSessionType" = "Aqua";
          "StandardErrorPath" = "/dev/null";
          "MachServices" = {
-             "com.nuebling.mac-mouse-fix.helper" = mach-port-object;
+             "com.mshank.mac-mouse-fix.helper" = mach-port-object;
          };
          "Label" = "mouse.fix.helper";
          "OnDemand" = false;
@@ -576,18 +576,18 @@ NSString *launchctl_print(NSString *identifier) {
         
         /// Notes on getting **executable path**:
         /// For SMAppService the only way to reliably get the executable path is the `sfltool dumpbtm` command. But it requires sudo permissions, so we can't do it in the background programmatically.
-        /// Under 14.2.1 I saw that `launchctl print gui/501/com.nuebling.mac-mouse-fix.helper` sometimes contains the executable path, but only under these circumstances:
+        /// Under 14.2.1 I saw that `launchctl print gui/501/com.mshank.mac-mouse-fix.helper` sometimes contains the executable path, but only under these circumstances:
         ///     Sometimes launchd gets confused because you try to launch MMF after moving it, or you try to launch it while there's another copy of MMF present on the system.
         ///     If and only if you have the case where launchd is confused because you **moved** MMF and you THEN call `launchctl print`, then the output seems to contain the executable path. But in the successful case or in the case where launchd launches the wrong copy of MMF Helper, `print` doesn't contain the executable path.
         /// I would be somewhat useful to retrieve the executable path from `print` in this case to give the user instructions how to fix the issue. However, the instructions are just 'restart your computer', and that doesn't seem like it's worth implementing at the moment.
-        /// Especially since we don't even know what causes [all these enabling issues](https://github.com/noah-nuebling/mac-mouse-fix/issues/648) and therefore don't know if this is would solve any real issues for users. I think it's better for now to just figure out what is causing these issues and then after that write a `Guide`, or write some automated fixes here.
+        /// Especially since we don't even know what causes [all these enabling issues](https://github.com/manishshanker/mac-mouse-fix-activated/issues/648) and therefore don't know if this is would solve any real issues for users. I think it's better for now to just figure out what is causing these issues and then after that write a `Guide`, or write some automated fixes here.
         
         /// Notes on **launchd being confused**:
         /// (This is a general writeup on the launchd-is-confused issues. Maybe we should move it to some more centralized place.)
         /// - At the time of writing, when you use SMAppService to register the Helper, launchd sometimes gets confused if you: 1. Have several copies of the app installed. 2. Have moved the app (Although it does seem to track app-moves to some extent.)
         /// - To see where launchd thinks the app is, use `sfltool dumpbtm`
         /// - We handle some of the launchd confusion in MessagePortUtility.swift in the 'Strange Helper' detection stuff. If a helper from another copy of MMF is started and tries to connect with us, we shut it down and give the user instructions to deleted the other copy.
-        /// - Despite this handling of the 'strange helper' situation, there are numerous reports of people not being able to open the app. See https://github.com/noah-nuebling/mac-mouse-fix/issues/648.
+        /// - Despite this handling of the 'strange helper' situation, there are numerous reports of people not being able to open the app. See https://github.com/manishshanker/mac-mouse-fix-activated/issues/648.
         /// - In all cases I observed, when launchd gets confused, SMAppService will say that it successfully launched the helper. (but really it will have launched a strange helper from another copy of MMF or it won't have launched anything at all) (I haven't studied the case where launchd doesn't launch anything at all much, so I'm not sure about that one.)
         
         return @"";
@@ -784,7 +784,7 @@ static NSError *makeWritable(NSString *itemPath) {
      __Motivation__
      - This is intended to be used by + repairLaunchdPlist to unlock the LaunchAgents folder so we can write our LaunchdPlist into it.
      - For some reason, many users have had troubles enabling Mac Mouse Fix recently. Many of these troubles turned out to be due to the LaunchAgents folder having it's permissions set to 'read only'. This function can be used to fix that.
-        - See for example Issue [#54](https://github.com/noah-nuebling/mac-mouse-fix/issues/54)
+        - See for example Issue [#54](https://github.com/manishshanker/mac-mouse-fix-activated/issues/54)
         - There was also another GH issue where the user orignially figured out that permissions were the problem which prompted me to add better logging. But I'm writing this function much later. So I can't remember which GH Issue that was. Props to that user anyways.
     
      __Notes__
@@ -847,9 +847,9 @@ static NSError *makeWritable(NSString *itemPath) {
 static void removePrefpaneLaunchdPlist(void) {
         
     /// Remove legacy launchd plist file if it exists
-    /// The launchd plist file used to be at `~/Library/LaunchAgents/com.nuebling.mousefix.helper.plist` when the app was still a prefpane. In the very early days it was at `mouse.fix.helper.plist`.
+    /// The launchd plist file used to be at `~/Library/LaunchAgents/com.mshank.mousefix.helper.plist` when the app was still a prefpane. In the very early days it was at `mouse.fix.helper.plist`.
     /// The prefpane itself could be installed in the user library or the root library, but the launchd plist would always be in the user library.
-    /// Now, with the app version, it's moved to `~/Library/LaunchAgents/com.nuebling.mac-mouse-fix.helper.plist`
+    /// Now, with the app version, it's moved to `~/Library/LaunchAgents/com.mshank.mac-mouse-fix.helper.plist`
     /// Having the old version still can lead to the old helper being started at startup, and I think other conflicts, too.
     
     DDLogInfo(@"Removing prefpane launchd plist");
@@ -859,7 +859,7 @@ static void removePrefpaneLaunchdPlist(void) {
     assert(libraryPaths.count == 1);
     
     NSMutableString *libraryPath = libraryPaths.firstObject.mutableCopy;
-    NSArray<NSString *> *legacyLaunchdPlistPaths = @[[libraryPath stringByAppendingPathComponent:@"LaunchAgents/com.nuebling.mousefix.helper.plist"],
+    NSArray<NSString *> *legacyLaunchdPlistPaths = @[[libraryPath stringByAppendingPathComponent:@"LaunchAgents/com.mshank.mousefix.helper.plist"],
                                                    [libraryPath stringByAppendingPathComponent:@"LaunchAgents/mouse.fix.helper.plist"]];
     NSError *err;
     

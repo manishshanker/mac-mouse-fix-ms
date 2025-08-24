@@ -245,7 +245,7 @@
 /* First draft: Zoom in or out in Safari and other apps.\n \nWorks like a two-finger double tap on an Apple Trackpad. */
 "effect.smart-zoom.hint" = "Phóng to hoặc thu nhỏ trong Safari và các ứng dụng khác.\n \nHoạt động như nhấp bằng hai ngón tay trên Apple Trackpad.";
 
-/* First draft: If you have **problems enabling** the app, click&nbsp;[here](https://github.com/noah-nuebling/mac-mouse-fix/discussions/861). */
+/* First draft: If you have **problems enabling** the app, click&nbsp;[here](https://github.com/manishshanker/mac-mouse-fix-activated/discussions/861). */
 "enable-timeout-toast" = "enable-timeout-toast";
 
 /* First draft: **Primary Mouse Button** can't be used\nPlease try another button */
@@ -305,8 +305,8 @@
 /* First draft: **'%@'** is not a known license key\n\nPlease try a different key */
 "license-toast.unknown-key" = "Không thể xác định **'%@'** là một khóa kích hoạt\n\nVui lòng thử một khóa khác";
 
-/* First draft: Activating your license failed for **unknown reasons**\n\nPlease write a **Bug Report** [here](https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report) */
-"license-toast.unknown-reason" = "Kích hoạt thất bạn do một **lỗi không xác định**\n\nVui lòng gửi một **Báo cáo lỗi** [tại đây](https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report)";
+/* First draft: Activating your license failed for **unknown reasons**\n\nPlease write a **Bug Report** [here](https://noah-mshank.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report) */
+"license-toast.unknown-reason" = "Kích hoạt thất bạn do một **lỗi không xác định**\n\nVui lòng gửi một **Báo cáo lỗi** [tại đây](https://noah-mshank.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report)";
 
 /* First draft: Set speed under\n[%@ > Mouse > Scrolling Speed](%@) */
 "macos-scrolling-hint" = "Thiết lập tốc độ tại \n[%@ > Chuột > Tốc độ di chuyển](%@)";

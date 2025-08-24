@@ -4,7 +4,7 @@ This folder contains stuff for generating user-facing markdown documents. At the
 
 The idea of the stuff in this folder is to generate/update markdown files based on a python script + templates. We use github actions (See `.github/workflows/...`) to automatically run the python scripts. We're currently using this to automatically update the acknowledgements as people buy the app. The readme isn't automatically rendered through GitHub Actions at the moment.
 
-We originally built this stuff in the [`github-actions-test` repo](https://github.com/noah-nuebling/github-actions-test). It contains some additional info and background in it's `Readme-Meta.md` file - which this readme is based upon. It also contains our original draft for the main MMF Readme.md, experiments and info on GitHub actions, and maybe more interesting stuff I forgot.
+We originally built this stuff in the [`github-actions-test` repo](https://github.com/noah-mshank/github-actions-test). It contains some additional info and background in it's `Readme-Meta.md` file - which this readme is based upon. It also contains our original draft for the main MMF Readme.md, experiments and info on GitHub actions, and maybe more interesting stuff I forgot.
 
 
 # Compiling the documents
@@ -60,7 +60,7 @@ https://rhysd.github.io/actionlint/
 
 #### Localization
 
-See the MMF Localization Guide: https://github.com/noah-nuebling/mac-mouse-fix/discussions/731
+See the MMF Localization Guide: https://github.com/manishshanker/mac-mouse-fix-activated/discussions/731
 
 #### Gumroad API
 
@@ -110,7 +110,7 @@ See GitHub [GraphQL API Explorer](https://docs.github.com/en/graphql/overview/ex
 # GitHub Actions
 
 Background
-- There's more research notes and stuff in the original [`github-actions-test` repo](https://github.com/noah-nuebling/github-actions-test).
+- There's more research notes and stuff in the original [`github-actions-test` repo](https://github.com/noah-mshank/github-actions-test).
 - We looked into various GitHub actions on the marketplace for generating readmes, but it seemed easier to just implement it ourselves.
 - IIRC we looked into using GH actions to run the Acknowledgements generation script every time a new copy of MMF is purchased. But we found it impossible for a Gumroad purchase to trigger a GitHub action (research notes in `github-actions-test`), so we decided to just run the update script periodically instead.
 - The GitHub action which runs the acknowledgements periodically is called `update-acknowledgements.yml` at the time of writing.

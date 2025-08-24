@@ -245,8 +245,8 @@
 /* First draft: Zoom in or out in Safari and other apps.\n \nWorks like a two-finger double tap on an Apple Trackpad. */
 "effect.smart-zoom.hint" = "Zoom in or out in Safari and other apps.\n \nWorks like a two-finger double tap on an Apple Trackpad.";
 
-/* First draft: If you have **problems enabling** the app, click&nbsp;[here](https://github.com/noah-nuebling/mac-mouse-fix/discussions/861). */
-"enable-timeout-toast" = "If you have **problems enabling** the app, click&nbsp;[here](https://github.com/noah-nuebling/mac-mouse-fix/discussions/861).";
+/* First draft: If you have **problems enabling** the app, click&nbsp;[here](https://github.com/manishshanker/mac-mouse-fix-activated/discussions/861). */
+"enable-timeout-toast" = "If you have **problems enabling** the app, click&nbsp;[here](https://github.com/manishshanker/mac-mouse-fix-activated/discussions/861).";
 
 /* First draft: **Primary Mouse Button** can't be used\nPlease try another button */
 "forbidden-capture-toast.1" = "**Primary Mouse Button** can't be used\nPlease try another button";
@@ -305,8 +305,8 @@
 /* First draft: **'%@'** is not a known license key\n\nPlease try a different key */
 "license-toast.unknown-key" = "**'%@'** is not a known license key\n\nPlease try a different key";
 
-/* First draft: Activating your license failed for **unknown reasons**\n\nPlease write a **Bug Report** [here](https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report) */
-"license-toast.unknown-reason" = "Activating your license failed for **unknown reasons**\n\nPlease write a **Bug Report** [here](https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report)";
+/* First draft: Activating your license failed for **unknown reasons**\n\nPlease write a **Bug Report** [here](https://noah-mshank.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report) */
+"license-toast.unknown-reason" = "Activating your license failed for **unknown reasons**\n\nPlease write a **Bug Report** [here](https://noah-mshank.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report)";
 
 /* First draft: Set speed under\n[%@ > Mouse > Scrolling Speed](%@) */
 "macos-scrolling-hint" = "Set speed under\n[%@ > Mouse > Scrolling Speed](%@)";

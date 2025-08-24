@@ -1,5 +1,5 @@
 """
-This script creates the "🌏 State of Localization 🌎" comment on discussion #731 (https://github.com/noah-nuebling/mac-mouse-fix/discussions/731)
+This script creates the "🌏 State of Localization 🌎" comment on discussion #731 (https://github.com/manishshanker/mac-mouse-fix-activated/discussions/731)
 
 Checklist:
 
@@ -121,7 +121,7 @@ def prepare_interactive_debugging(repo_root, website_root):
 def upload_markdown(api_key, markdown):
     
     """
-    Upload the generated markdown to a comment on the "Localization Mac Mouse Fix" discussion (https://github.com/noah-nuebling/mac-mouse-fix/discussions/731)
+    Upload the generated markdown to a comment on the "Localization Mac Mouse Fix" discussion (https://github.com/manishshanker/mac-mouse-fix-activated/discussions/731)
     Notes:
     - Adding a comment will alert people who have notifications turned on for the discussion!
     - Find the api_key in the Apple Note `MMF Localization Script Access Token`
@@ -143,7 +143,7 @@ def upload_markdown(api_key, markdown):
     comment_count = 100
     find_comment_query = textwrap.dedent(f"""
         {{
-            repository(owner: "noah-nuebling", name: "mac-mouse-fix") {{
+            repository(owner: "noah-mshank", name: "mac-mouse-fix") {{
                 discussion(number: 731) {{
                     id
                     comments(last:{comment_count}) {{
@@ -603,7 +603,7 @@ def commit_string_for_markdown(commit, local_repo_path):
     repo_name = os.path.basename(local_repo_path)
     assert repo_name == 'mac-mouse-fix' or repo_name == 'mac-mouse-fix-website', "Can't get paths for unknown repo {repo_name}"
     
-    link = f'https://github.com/noah-nuebling/{repo_name}/commit/{commit_hash}'
+    link = f'https://github.com/noah-mshank/{repo_name}/commit/{commit_hash}'
     display_short = commit_hash[:7] # The short hashes displayed on GH and elsewhere have the first 7 chars IIRC
     
     return f"[{display_short}]({link})"
@@ -626,9 +626,9 @@ def file_paths_for_markdown(local_path, local_repo_path):
     
     gh_root = ''
     if repo_name == 'mac-mouse-fix':
-        gh_root = 'https://github.com/noah-nuebling/mac-mouse-fix/blob/master'
+        gh_root = 'https://github.com/manishshanker/mac-mouse-fix-activated/blob/master'
     else:
-        gh_root = 'https://github.com/noah-nuebling/mac-mouse-fix-website/blob/main'
+        gh_root = 'https://github.com/manishshanker/mac-mouse-fix-activated-website/blob/main'
 
     display_short = os.path.basename(local_path) # + (" (Website)" if repo_name == 'mac-mouse-fix-website' else '')
     display = repo_name + '/' + relpath

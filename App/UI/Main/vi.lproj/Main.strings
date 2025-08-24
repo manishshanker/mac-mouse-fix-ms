@@ -293,8 +293,8 @@
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "oEX-Tp-9Cv"; */
 "oEX-Tp-9Cv.title" = "Chọn tất cả";
 
-/* Class = "NSTextFieldCell"; title = "Created by Noah Nuebling"; ObjectID = "pMz-a0-1UQ"; */
-"pMz-a0-1UQ.title" = "Phát triển bởi Noah Nuebling";
+/* Class = "NSTextFieldCell"; title = "Created by Noah mshank"; ObjectID = "pMz-a0-1UQ"; */
+"pMz-a0-1UQ.title" = "Phát triển bởi Noah mshank";
 
 /* Class = "NSViewController"; title = "Scrolling"; ObjectID = "qcW-e9-BqR"; Note = "Scrolling Tab Title"; */
 "qcW-e9-BqR.title" = "Cuộn";

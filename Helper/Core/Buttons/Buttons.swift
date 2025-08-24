@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // Buttons.swift
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2022
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2022
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -16,7 +16,7 @@ import CocoaLumberjackSwift
 @objc class Buttons: NSObject {
     
     /// Ivars
-    static var queue: DispatchQueue = DispatchQueue(label: "com.nuebling.mac-mouse-fix.buttons", qos: .userInteractive, attributes: [], autoreleaseFrequency: .inherit, target: nil)
+    static var queue: DispatchQueue = DispatchQueue(label: "com.mshank.mac-mouse-fix.buttons", qos: .userInteractive, attributes: [], autoreleaseFrequency: .inherit, target: nil)
     static private var clickCycle = ClickCycle(buttonQueue: DispatchQueue(label: "replace this"))
     static private var buttonModifiers = ButtonModifiers()
     @objc static var useButtonModifiers = false

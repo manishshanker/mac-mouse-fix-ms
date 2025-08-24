@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // ButtonInputReceiver.m
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2019
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2019
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -184,7 +184,7 @@ static CGEventRef eventTapCallback(CGEventTapProxy proxy, CGEventType type, CGEv
     
     /// Old method
     /// - How does old method work? - For the old method, we registered input callbacks on the HIDDevices and put those low level inputs in with co-occuring CGEvents to find which device sent a CGEvent
-    /// - Why switch away from old method? - Under Ventura I think the HID callback API broke for some devices. See https://github.com/noah-nuebling/mac-mouse-fix/issues/424. I remember similar bugs in the API in older macOS versions a few years back.
+    /// - Why switch away from old method? - Under Ventura I think the HID callback API broke for some devices. See https://github.com/manishshanker/mac-mouse-fix-activated/issues/424. I remember similar bugs in the API in older macOS versions a few years back.
     
 //    if ([_buttonInputsFromRelevantDevices isEmpty]) return event;
 //    NSDictionary *lastInputFromRelevantDevice = [_buttonInputsFromRelevantDevices dequeue];

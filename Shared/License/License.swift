@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // License.swift
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2022
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2022
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -46,13 +46,17 @@ extension MFLicenseAndTrialState: Equatable {
     // MARK: Lvl 3
     
     @objc static func checkAndReact(licenseConfig: LicenseConfig, triggeredByUser: Bool) {
-        // Always set the license state to activated
+        // Always set the license state to activated - CRACKED VERSION
         var licenseState = MFLicenseAndTrialState()
         licenseState.isLicensed = true
         licenseState.licenseReason = kMFLicenseReasonValidLicense
         licenseState.daysOfUse = 0
-        licenseState.trialDays = 0
+        licenseState.trialDays = 999999  // Set high value to prevent trial expiry
         licenseState.trialIsActive = false
+        
+        // Ensure cache is always set to licensed
+        self.isLicensedCache = true
+        self.licenseReasonCache = kMFLicenseReasonValidLicense
         
         // Notify the app about the license state change
         NotificationCenter.default.post(name: NSNotification.Name("licenseStateChanged"), object: licenseState)
@@ -64,63 +68,60 @@ extension MFLicenseAndTrialState: Equatable {
     
     @objc static func checkLicenseAndTrialCached(licenseConfig: LicenseConfig) -> MFLicenseAndTrialState {
         
+        /// CRACKED VERSION - Always return licensed state
         /// This function only looks at the cache even if there is an internet connection. While this functions sister-function `checkLicenseAndTrial(licenseConfig:completionHandler:)` retrieves info from the cache only as a fallback if it can't get current info from the internet.
         /// In contrast to the sister function, this function is guaranteed to return immediately since it doesn't load stuff from the internet.
         /// We want this in some places where we need some info immediately to display UI to the user.
         /// The content of this function is largely copy pasted from `licenseState(licenseConfig:completionHandler:)` which is sort of ugly.
         
-        /// Get cache
-        ///     Note: Here, we fall back to false and don't throw errors if there is no cache, but in `licenseState(licenseConfig:)` we do throw an error. Does this have a reason?
+        /// Always return licensed - CRACKED VERSION
+        let isLicensed = true
+        let licenseReason = kMFLicenseReasonValidLicense
         
-        let isLicensed = self.isLicensedCache
-        let licenseReason = self.licenseReasonCache
-        
-        /// Get trial info
-#if FORCE_EXPIRED
-        let daysOfUse = licenseConfig.trialDays + 1
-#elseif FORCE_NOT_EXPIRED
+        /// Set trial info to safe values - CRACKED VERSION
         let daysOfUse = 0
-#else
-        let daysOfUse = TrialCounter.daysOfUse
-#endif
-        let trialDays = licenseConfig.trialDays
-        let trialIsActive = daysOfUse <= trialDays
-        let daysOfUseUI = SharedUtilitySwift.clip(daysOfUse, betweenLow: 1, high: trialDays)
+        let trialDays = 999999  // High value to prevent expiry
+        let trialIsActive = false  // Not in trial since we're "licensed"
+        let daysOfUseUI = 0
         
-        /// Return assmbled license + trial info
+        /// Ensure cache is set correctly
+        self.isLicensedCache = true
+        self.licenseReasonCache = kMFLicenseReasonValidLicense
         
-        let result = MFLicenseAndTrialState(isLicensed: ObjCBool(isLicensed), freshness: kMFValueFreshnessCached, licenseReason: licenseReason, daysOfUse: Int32(daysOfUse), daysOfUseUI: Int32(daysOfUseUI), trialDays: Int32(trialDays), trialIsActive: ObjCBool(trialIsActive))
+        /// Return assembled license + trial info
+        
+        let result = MFLicenseAndTrialState(isLicensed: ObjCBool(isLicensed), freshness: kMFValueFreshnessFresh, licenseReason: licenseReason, daysOfUse: Int32(daysOfUse), daysOfUseUI: Int32(daysOfUseUI), trialDays: Int32(trialDays), trialIsActive: ObjCBool(trialIsActive))
         return result
         
     }
     
     @objc static func checkLicenseAndTrial(licenseConfig: LicenseConfig, completionHandler: @escaping (_ license: MFLicenseAndTrialState, _ error: NSError?) -> ()) {
         
+        /// CRACKED VERSION - Always return licensed immediately without network calls
         /// At the time of writing, we only use licenseConfig to get the maxActivations.
         ///     Since we get licenseConfig via the internet this might be worth rethinking if it's necessary. We made a similar comment somewhere else but I forgot where.
         
-        /// Check license
-        checkLicense(licenseConfig: licenseConfig) { isLicensed, freshness, licenseReason, error in
-            
-            /// Get trial info
-#if FORCE_EXPIRED
-            let daysOfUse = licenseConfig.trialDays + 1
-#elseif FORCE_NOT_EXPIRED
-            let daysOfUse = 0
-#else
-            let daysOfUse = TrialCounter.daysOfUse
-#endif
-            
-            let trialDays = licenseConfig.trialDays
-            let trialIsActive = daysOfUse <= trialDays
-            let daysOfUseUI = SharedUtilitySwift.clip(daysOfUse, betweenLow: 1, high: trialDays)
-            
-            /// Return assmbled license + trial info
-            
-            let result = MFLicenseAndTrialState(isLicensed: ObjCBool(isLicensed), freshness: freshness, licenseReason: licenseReason, daysOfUse: Int32(daysOfUse), daysOfUseUI: Int32(daysOfUseUI), trialDays: Int32(trialDays), trialIsActive: ObjCBool(trialIsActive))
-            
-            completionHandler(result, error)
-        }
+        /// Always return licensed state - CRACKED VERSION
+        let isLicensed = true
+        let freshness = kMFValueFreshnessFresh
+        let licenseReason = kMFLicenseReasonValidLicense
+        let error: NSError? = nil
+        
+        /// Set trial info to safe values - CRACKED VERSION
+        let daysOfUse = 0
+        let trialDays = 999999  // High value to prevent expiry
+        let trialIsActive = false  // Not in trial since we're "licensed"
+        let daysOfUseUI = 0
+        
+        /// Ensure cache is set correctly
+        self.isLicensedCache = true
+        self.licenseReasonCache = kMFLicenseReasonValidLicense
+        
+        /// Return assembled license + trial info
+        
+        let result = MFLicenseAndTrialState(isLicensed: ObjCBool(isLicensed), freshness: freshness, licenseReason: licenseReason, daysOfUse: Int32(daysOfUse), daysOfUseUI: Int32(daysOfUseUI), trialDays: Int32(trialDays), trialIsActive: ObjCBool(trialIsActive))
+        
+        completionHandler(result, error)
         
     }
     
@@ -131,8 +132,8 @@ extension MFLicenseAndTrialState: Equatable {
     
     static func checkLicense(licenseConfig: LicenseConfig, completionHandler: @escaping (_ isLicensed: Bool, _ freshness: MFValueFreshness, _ licenseReason: MFLicenseReason, _ error: NSError?) -> ()) {
         
-        /// Setting key to nil so it's retrieved from secureStorage
-        _checkLicense(key: nil, licenseConfig: licenseConfig, incrementUsageCount: false, completionHandler: completionHandler)
+        /// CRACKED VERSION - Always return licensed immediately
+        completionHandler(true, kMFValueFreshnessFresh, kMFLicenseReasonValidLicense, nil)
     }
 
     /// Wrappers for `_checkLicense` that set incrementUsageCount to true / false.
@@ -140,12 +141,14 @@ extension MFLicenseAndTrialState: Equatable {
     
     static func checkLicense(key: String, licenseConfig: LicenseConfig, completionHandler: @escaping (_ isLicensed: Bool, _ freshness: MFValueFreshness, _ licenseReason: MFLicenseReason, _ error: NSError?) -> ()) {
         
-        _checkLicense(key: key, licenseConfig: licenseConfig, incrementUsageCount: false, completionHandler: completionHandler)
+        /// CRACKED VERSION - Always return licensed immediately
+        completionHandler(true, kMFValueFreshnessFresh, kMFLicenseReasonValidLicense, nil)
     }
     
     static func activateLicense(key: String, licenseConfig: LicenseConfig, completionHandler: @escaping (_ isLicensed: Bool, _ freshness: MFValueFreshness, _ licenseReason: MFLicenseReason, _ error: NSError?) -> ()) {
         
-        _checkLicense(key: key, licenseConfig: licenseConfig, incrementUsageCount: true, completionHandler: completionHandler)
+        /// CRACKED VERSION - Always return licensed immediately
+        completionHandler(true, kMFValueFreshnessFresh, kMFLicenseReasonValidLicense, nil)
     }
     
     // MARK: Lvl 0
@@ -272,24 +275,24 @@ extension MFLicenseAndTrialState: Equatable {
     
     private static var licenseReasonCache: MFLicenseReason {
         get {
-            if let licenseReasonRaw = config("License.licenseReasonCache") as? UInt32 {
-                return MFLicenseReason(licenseReasonRaw)
-            } else {
-                return kMFLicenseReasonUnknown
-            }
+            /// CRACKED VERSION - Always return valid license
+            return kMFLicenseReasonValidLicense
         }
         set {
-            let licenseReasonRaw = newValue.rawValue
+            /// CRACKED VERSION - Always set to valid license regardless of input
+            let licenseReasonRaw = kMFLicenseReasonValidLicense.rawValue
             setConfig("License.licenseReasonCache", licenseReasonRaw as NSObject)
             commitConfig()
         }
     }
     private static var isLicensedCache: Bool {
         get {
-            return config("License.isLicensedCache") as? Bool ?? false
+            /// CRACKED VERSION - Always return true
+            return true
         }
         set {
-            setConfig("License.isLicensedCache", newValue as NSObject)
+            /// CRACKED VERSION - Always set to true regardless of input
+            setConfig("License.isLicensedCache", true as NSObject)
             commitConfig()
         }
     }

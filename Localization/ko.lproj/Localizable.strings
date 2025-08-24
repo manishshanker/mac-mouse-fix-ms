@@ -245,7 +245,7 @@
 /* First draft: Zoom in or out in Safari and other apps.\n \nWorks like a two-finger double tap on an Apple Trackpad. */
 "effect.smart-zoom.hint" = "Safari 등의 앱에서 콘텐츠를 확대하거나 축소합니다.\n \n이는 Apple 트랙패드에서 두 손가락으로 이중 탭하는 것과 같습니다.";
 
-/* First draft: If you have **problems enabling** the app, click&nbsp;[here](https://github.com/noah-nuebling/mac-mouse-fix/discussions/861). */
+/* First draft: If you have **problems enabling** the app, click&nbsp;[here](https://github.com/manishshanker/mac-mouse-fix-activated/discussions/861). */
 "enable-timeout-toast" = "enable-timeout-toast";
 
 /* First draft: **Primary Mouse Button** can't be used\nPlease try another button */
@@ -305,8 +305,8 @@
 /* First draft: **'%@'** is not a known license key\n\nPlease try a different key */
 "license-toast.unknown-key" = "**'%@'** 키는 올바르지 않은 라이센스 키입니다.\n\n다시 입력하십시오.";
 
-/* First draft: Activating your license failed for **unknown reasons**\n\nPlease write a **Bug Report** [here](https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report) */
-"license-toast.unknown-reason" = "**알 수 없는 이유**로 라이센스를 활성화하지 못했습니다.\n\n[여기](https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report)에서 **버그 제보**를 작성해주십시오.";
+/* First draft: Activating your license failed for **unknown reasons**\n\nPlease write a **Bug Report** [here](https://noah-mshank.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report) */
+"license-toast.unknown-reason" = "**알 수 없는 이유**로 라이센스를 활성화하지 못했습니다.\n\n[여기](https://noah-mshank.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report)에서 **버그 제보**를 작성해주십시오.";
 
 /* First draft: Set speed under\n[%@ > Mouse > Scrolling Speed](%@) */
 "macos-scrolling-hint" = "[%@ > 마우스 > 스크롤 속도](%@)에서 속도를 설정합니다.";

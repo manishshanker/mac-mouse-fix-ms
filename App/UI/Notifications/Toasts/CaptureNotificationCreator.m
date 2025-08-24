@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // CaptureNotifications.m
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2021
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2021
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -65,7 +65,7 @@
         /// Define learn more string
         
         NSString *linkStringRaw = NSLocalizedString(@"capture-toast.link", @"First draft: Learn More");
-        NSAttributedString *linkString = [linkStringRaw.attributed attributedStringByAddingHyperlink:[NSURL URLWithString:@"https://github.com/noah-nuebling/mac-mouse-fix/discussions/112"] forSubstring:linkStringRaw];
+        NSAttributedString *linkString = [linkStringRaw.attributed attributedStringByAddingHyperlink:[NSURL URLWithString:@"https://github.com/manishshanker/mac-mouse-fix-activated/discussions/112"] forSubstring:linkStringRaw];
         
         /// Create string describing uncaptured and captured
         

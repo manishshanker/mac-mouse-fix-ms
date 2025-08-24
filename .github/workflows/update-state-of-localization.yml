@@ -30,7 +30,7 @@ jobs:
     - name: Checkout mac-mouse-fix
       uses: actions/checkout@v4
       with:
-        repository: noah-nuebling/mac-mouse-fix   # Checkout mmf repo
+        repository: noah-mshank/mac-mouse-fix   # Checkout mmf repo
         ref: master                               # Checkout master branch
         path: './mac-mouse-fix'                   # Place repo at this path relative to $GITHUB_WORKSPACE
         fetch-depth: 0                            # Check out everything
@@ -38,7 +38,7 @@ jobs:
     - name: Checkout mac-mouse-fix-website
       uses: actions/checkout@v4
       with:
-        repository: noah-nuebling/mac-mouse-fix-website # Checkout website repo
+        repository: noah-mshank/mac-mouse-fix-website # Checkout website repo
         ref: main  
         path: './mac-mouse-fix-website'
         fetch-depth: 0

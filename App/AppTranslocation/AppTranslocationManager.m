@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // AppTranslocationManager.m
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2021
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2021
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -11,7 +11,7 @@
 /// Credits for the `removeTranslocation` functionality: https://www.synack.com/blog/untranslocating-apps/
 /// \discussion As far as I understand, if we ever run executables in the same folder as the app then this poses a security risk, but I don't think we do that so it should be fine.
 /// \discussion If we can't remove translocation, this will result in an infinte restarting loop.
-/// \discussion There seem to be issues with enabling MMF under macOS 14 Sonoma caused by App Translocation. See this [this mail](message:<D82D4788-3E92-464B-8292-25755E2D8BDD@gmail.com>) and [this issue](https://github.com/noah-nuebling/mac-mouse-fix/issues/648).
+/// \discussion There seem to be issues with enabling MMF under macOS 14 Sonoma caused by App Translocation. See this [this mail](message:<D82D4788-3E92-464B-8292-25755E2D8BDD@gmail.com>) and [this issue](https://github.com/manishshanker/mac-mouse-fix-activated/issues/648).
 
 #import "AppTranslocationManager.h"
 #import <dlfcn.h>

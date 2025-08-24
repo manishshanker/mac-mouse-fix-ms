@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // ScrollAnalyzer.m
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2021
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2021
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -202,7 +202,7 @@ static CFTimeInterval _consecutiveSwipeSequenceStartTime;
         /// Initialize smoother with tickMax
         /// Notes:
         /// - Initializing the smoother with the tickMax should make things a bit more stable. Not sure if good idea. Added this to make `baseMsPerStepMin` speed up the animation more slowly for fast-but-short scrollSwipes. Without this it feels a bit volatile. This might make the scroll distance acceleration slower though.
-        /// - Update: V-Coba complained about scrolling being too slow with 'Precision' enabled in [this issue](https://github.com/noah-nuebling/mac-mouse-fix/issues/795). I'm pretty sure it is caused by this. This is a bit of a dilemma. I do think it might be good in principle to initialize the smoother with something, since otherwise the first timebetweenticks is unsmoothed and can be randomly very high or very low (as I understand currently, it's been a while since a wrote this). However, we've spent a LOT of time perfecting the acceleration curves without this additional smoothing, and adding the smoothing makes the acceleration curves noticably worse, especially with 'Precision' enabled. I don't use 'Precision', but from my limited testing I have the same impression as V-Coba.  So I'll turn the smoothing off for now, which should restore the original scroll-distance-acceleration, and try to tune the `baseMsPerStepMin` down a bit so that it doesn't feel as volatile even without the extra smoothing.
+        /// - Update: V-Coba complained about scrolling being too slow with 'Precision' enabled in [this issue](https://github.com/manishshanker/mac-mouse-fix-activated/issues/795). I'm pretty sure it is caused by this. This is a bit of a dilemma. I do think it might be good in principle to initialize the smoother with something, since otherwise the first timebetweenticks is unsmoothed and can be randomly very high or very low (as I understand currently, it's been a while since a wrote this). However, we've spent a LOT of time perfecting the acceleration curves without this additional smoothing, and adding the smoothing makes the acceleration curves noticably worse, especially with 'Precision' enabled. I don't use 'Precision', but from my limited testing I have the same impression as V-Coba.  So I'll turn the smoothing off for now, which should restore the original scroll-distance-acceleration, and try to tune the `baseMsPerStepMin` down a bit so that it doesn't feel as volatile even without the extra smoothing.
         /// - Plan: At some point, take more time to explore adding smoothing here, and then tune the acceleration curves and the `baseMsPerStepMin` to feel as good as possible with that.
         /// - Lesson: Don't ship changes to these fundamental aspects of the scrolling system, if you don't have a lot of time to test and tune curves to the changes.
         /// - Further reflection:

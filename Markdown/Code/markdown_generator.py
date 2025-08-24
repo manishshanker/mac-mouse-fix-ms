@@ -150,7 +150,7 @@ def main():
             fallback_notice = f"""
 <table align="center"><td align="center">
 This document doesn't have a translation for <code>{language_dict['language_name']}</code> yet.<br>
-If you want to help translate it, click <a align="center" href="https://github.com/noah-nuebling/mac-mouse-fix/discussions/731">here</a>.
+If you want to help translate it, click <a align="center" href="https://github.com/manishshanker/mac-mouse-fix-activated/discussions/731">here</a>.
 </td></table>\n\n"""
             template = fallback_notice + template
         
@@ -494,7 +494,7 @@ def display_name(sale):
         if use_n1:
             name = n1
         else:
-            name = n2.partition('.')[0] # In a case like gm.ail.com, we want gm.ail, but this will just return gm. But should be good enough. Edit: Why would we display the users name as 'gmail'? Why not just 'A friendly user' at that point? I guess because some ppl have me@noah.nuebling.com addresses?
+            name = n2.partition('.')[0] # In a case like gm.ail.com, we want gm.ail, but this will just return gm. But should be good enough. Edit: Why would we display the users name as 'gmail'? Why not just 'A friendly user' at that point? I guess because some ppl have me@noah.mshank.com addresses?
 
     # Replace weird separators with spaces
     for char in '._-–—+':

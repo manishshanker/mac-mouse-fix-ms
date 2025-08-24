@@ -1,15 +1,15 @@
 //
 // --------------------------------------------------------------------------
 // SecureStorage.swift
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2022
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2022
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
 /// Discussion:
 /// - This is a wrapper around the keychain so we can store and retrieve values with simple keypath-based syntax.
-/// - All settings are stored in a dictionary inside a single keychain item labeled 'com.nuebling.mac-mouse-fix.secure-storage'.
+/// - All settings are stored in a dictionary inside a single keychain item labeled 'com.mshank.mac-mouse-fix.secure-storage'.
 /// - vs storing in config.plist, this has the advantage that the keychain is synced to all the users devices.
 /// - It also isn't automatically deleted on uninstall by apps like AppCleaner by FreeMacSoft. This makes it a little more annoying to reset the trial period.
 /// - Special entitlements on the mainApp and Helper let both access the same keychain item.
@@ -182,7 +182,7 @@ import CocoaLumberjackSwift
     
     /// Core lvl 0
     
-    private static let label = "com.nuebling.mac-mouse-fix.secure-storage" /// "MFSecureStorage"
+    private static let label = "com.mshank.mac-mouse-fix.secure-storage" /// "MFSecureStorage"
     
     private static func baseQuery() -> [String: Any] {
         

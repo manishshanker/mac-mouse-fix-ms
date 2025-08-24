@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // TrialCounter.swift
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2022
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2022
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -62,6 +62,18 @@ import CocoaLumberjackSwift
         
         /// Real init
         
+        /// CRACKED VERSION - Skip all license checking and trial setup
+        /// Always assume we're licensed and don't set up any timers
+        
+        /// Set flags to indicate we're "licensed"
+        self.trialIsActive = false  // Not in trial since we're "licensed"
+        self.hasBeenUsedToday = false
+        
+        /// Don't set up any timers or license checks - CRACKED VERSION
+        DDLogInfo("TrialCounter init - CRACKED VERSION: Skipping license checks and trial setup")
+        
+        /// Original code commented out to prevent license checking
+        /*
         /// Get licenseConfig
         ///     Note: Getting the licenseConfig is unnecessary if the app is licenseed. That's because all that the licenseState() func needs the licenseConfig for is to check the number of trialDays. And if the app is licensed, we don't need to check for the trialDays.
         
@@ -117,6 +129,7 @@ import CocoaLumberjackSwift
                 }
             }
         }
+        */
     }
     
     /// Vars
@@ -127,10 +140,12 @@ import CocoaLumberjackSwift
     
     @objc static var daysOfUse: Int {
         get {
-            SecureStorage.get("License.trial.daysOfUse") as? Int ?? 0
+            /// CRACKED VERSION - Always return 0 to prevent trial expiry
+            return 0
         }
         set {
-            SecureStorage.set("License.trial.daysOfUse", value: newValue)
+            /// CRACKED VERSION - Do nothing, don't increment trial days
+            // SecureStorage.set("License.trial.daysOfUse", value: newValue)
         }
     }
     @objc static var lastUseDate: Date? {
@@ -148,12 +163,18 @@ import CocoaLumberjackSwift
     /// Interface for Helper
     @objc func handleUse() {
         
+        /// CRACKED VERSION - Do nothing, don't count usage or trigger license checks
         /// Debug
-        DDLogDebug("handling use in trial")
+        DDLogDebug("handling use in trial - CRACKED VERSION: ignoring")
         
         /// Guard not running helper
         assert(runningHelper())
         
+        /// CRACKED VERSION - Just return without doing anything
+        return
+        
+        /// Original code commented out to prevent trial counting
+        /*
         /// Only react if trial is active
         if !trialIsActive { return }
         
@@ -177,5 +198,6 @@ import CocoaLumberjackSwift
                 License.checkAndReact(licenseConfig: licenseConfig, triggeredByUser: false)
             }
         }
+        */
     }
 }

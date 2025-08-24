@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // UIStrings.m
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2021
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2021
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -189,7 +189,7 @@
     ///   Notes:
     ///   - This approach is preferable to Approach 1 because we don't need a stringFallback for the tooltip and because it simplifies the code a lot.
     ///   - However, I tested this under macOS Big Sur, and it didn't work – before I installed the SF Symbois app. After installing the app, it started working perfectly. Not sure what's going on there.
-    ///     Also see the discussion on this GH pull request with @groverlynn: https://github.com/noah-nuebling/mac-mouse-fix/pull/385
+    ///     Also see the discussion on this GH pull request with @groverlynn: https://github.com/manishshanker/mac-mouse-fix-activated/pull/385
     
 //    NSString *keyStrRaw;
 //

@@ -4,7 +4,7 @@
 	<summary>󠁧󠁿{current_language}</summary>
 	  
 {language_list}
-	[Help translate Mac Mouse Fix to different languages!](https://github.com/noah-nuebling/mac-mouse-fix/discussions/731)
+	[Help translate Mac Mouse Fix to different languages!](https://github.com/manishshanker/mac-mouse-fix-activated/discussions/731)
 </details>
 
   
@@ -12,14 +12,14 @@
 
 <!--
 <table align="center"><td>
-You can now test the <a href="https://github.com/noah-nuebling/mac-mouse-fix/releases/">Mac Mouse Fix 3 Beta!</a>
+You can now test the <a href="https://github.com/manishshanker/mac-mouse-fix-activated/releases/">Mac Mouse Fix 3 Beta!</a>
 </td></table>
 -->
 
 <br>
 
 <div align="center">
-	<a href="https://noah-nuebling.github.io/mac-mouse-fix-website">
+	<a href="https://noah-mshank.github.io/mac-mouse-fix-website">
 		<img src="{repo_root}Markdown/Media/AppIconRound3.png" width="200" height="auto">
 	</a>
 	<h1>Mac Mouse Fix</h1>  
@@ -31,13 +31,13 @@ You can now test the <a href="https://github.com/noah-nuebling/mac-mouse-fix/rel
 
 <div align="center">
 	<table>
-		<th><a href=https://noah-nuebling.github.io/mac-mouse-fix-website>Website&nbsp;↗</a></th>
-		<td><a href=https://github.com/noah-nuebling/mac-mouse-fix/issues/new/choose>Hilfe&nbsp;&&nbsp;Feedback</a></td>
-		<td><a href=https://github.com/noah-nuebling/mac-mouse-fix/releases>Releases</a></td>
+		<th><a href=https://noah-mshank.github.io/mac-mouse-fix-website>Website&nbsp;↗</a></th>
+		<td><a href=https://github.com/manishshanker/mac-mouse-fix-activated/issues/new/choose>Hilfe&nbsp;&&nbsp;Feedback</a></td>
+		<td><a href=https://github.com/manishshanker/mac-mouse-fix-activated/releases>Releases</a></td>
  		<td><a href="{language_root}Acknowledgements.md">Danksagungen</a></td>
 	</table>
   <!-- vvv Hint for translators: You can change the label by editing the text inside the URL after `label=`. Use url encoding for special chars. E.g. `%20` to insert spaces. -->
-	<img src="https://img.shields.io/github/downloads/noah-nuebling/mac-mouse-fix/total?label=Downloads&color=25c65f">
+	<img src="https://img.shields.io/github/downloads/noah-mshank/mac-mouse-fix/total?label=Downloads&color=25c65f">
 </div>
 
 <br>
@@ -51,17 +51,17 @@ Mac Mouse Fix ist eine App, die deine Maus besser macht.
 
 Ich möchte Mac Mouse Fix zum besten Maustreiber *aller Zeiten* machen! Derzeit fehlen noch einige Funktionen, aber ich denke es macht jetzt schon **normale Mäuse** in einiger Hinsicht **zu den besten Eingabegeräten für Macs**! Auf dem selben Level oder sogar besser als ein Apple Trackpad oder eine Logitech MX Master Maus.
 
-Für mehr Info darüber, wie genau Mac Mouse Fix deine Maus verbessert, besuche die [Website](https://noah-nuebling.github.io/mac-mouse-fix-website).
+Für mehr Info darüber, wie genau Mac Mouse Fix deine Maus verbessert, besuche die [Website](https://noah-mshank.github.io/mac-mouse-fix-website).
 
 ## Funktionen
 
-Siehe die [Website](https://noah-nuebling.github.io/mac-mouse-fix-website#trackpad) für einen Überblick über die Funktionen von Mac Mouse Fix, einschließlich Videodemos!
+Siehe die [Website](https://noah-mshank.github.io/mac-mouse-fix-website#trackpad) für einen Überblick über die Funktionen von Mac Mouse Fix, einschließlich Videodemos!
 
-Mehr Details findest du unter <a href=https://github.com/noah-nuebling/mac-mouse-fix/releases>Releases</a>.
+Mehr Details findest du unter <a href=https://github.com/manishshanker/mac-mouse-fix-activated/releases>Releases</a>.
 
 ## Installation
 
-Lade die neueste Version von Mac Mouse Fix auf der [Website](http://noah-nuebling.github.io/mac-mouse-fix-website/) herunter.
+Lade die neueste Version von Mac Mouse Fix auf der [Website](http://noah-mshank.github.io/mac-mouse-fix-website/) herunter.
 
 Du kannst Mac Mouse Fix auch über [Homebrew](https://brew.sh/) installieren! Gib einfach den folgenden Befehl in das Terminal ein:
 
@@ -69,19 +69,19 @@ Du kannst Mac Mouse Fix auch über [Homebrew](https://brew.sh/) installieren! Gi
 brew install mac-mouse-fix
 ```
 
-Ältere Versionen von Mac Mouse Fix kannst du unter [Releases](https://github.com/noah-nuebling/mac-mouse-fix/releases) herunterladen.
+Ältere Versionen von Mac Mouse Fix kannst du unter [Releases](https://github.com/manishshanker/mac-mouse-fix-activated/releases) herunterladen.
 
 ## macOS-Kompatibilität
 
 Die neueste Version von Mac Mouse Fix ist für **macOS 11 Big Sur** oder später gemacht.
 
-Wenn du macOS **10.15 Catalina**, macOS **10.14 Mojave** oder macOS **10.13 High Sierra** benutzt, kannst du die [neueste Version von Mac Mouse Fix 2](https://noah-nuebling.github.io/redirection-service?message=&target=mmf2-latest) verwenden. Mac Mouse Fix 3.0.0 und später könnten vielleicht auch noch auf deinem Gerät funktionieren, aber sie werden visuelle Probleme haben und einige Funktionen werden eventuell nicht richtig funktionieren.
+Wenn du macOS **10.15 Catalina**, macOS **10.14 Mojave** oder macOS **10.13 High Sierra** benutzt, kannst du die [neueste Version von Mac Mouse Fix 2](https://noah-mshank.github.io/redirection-service?message=&target=mmf2-latest) verwenden. Mac Mouse Fix 3.0.0 und später könnten vielleicht auch noch auf deinem Gerät funktionieren, aber sie werden visuelle Probleme haben und einige Funktionen werden eventuell nicht richtig funktionieren.
 
-Wenn du macOS **10.12 Sierra** oder **10.11 El Capitan** benutzt, kannst du Mac Mouse Fix [2.2.0](https://github.com/noah-nuebling/mac-mouse-fix/releases/tag/2.2.0) oder früher verwenden.
+Wenn du macOS **10.12 Sierra** oder **10.11 El Capitan** benutzt, kannst du Mac Mouse Fix [2.2.0](https://github.com/manishshanker/mac-mouse-fix-activated/releases/tag/2.2.0) oder früher verwenden.
 
 ## Preisgestaltung
 
-Einen Überblick über die Preisgestaltung von Mac Mouse Fix 3 findest du auf der [Website](https://noah-nuebling.github.io/mac-mouse-fix-website#price).\
+Einen Überblick über die Preisgestaltung von Mac Mouse Fix 3 findest du auf der [Website](https://noah-mshank.github.io/mac-mouse-fix-website#price).\
 Mac Mouse Fix 2 und früher bleiben für immer kostenlos.
 
 ## Deinstallation
@@ -95,7 +95,7 @@ Unter macOS ist es für Apps nicht machbar, diese hinterlassenen Dateien selbst 
 ## Was die Leute sagen
 
 Vielen Dank an alle, die ihre Begeisterung über Mac Mouse Fix geteilt haben!\
-Auf der [Website](http://noah-nuebling.github.io/mac-mouse-fix-website/) kannst du eine Sammlung schöner Dinge, die Leute über die App gesagt haben, finden.
+Auf der [Website](http://noah-mshank.github.io/mac-mouse-fix-website/) kannst du eine Sammlung schöner Dinge, die Leute über die App gesagt haben, finden.
 
 ## Tipps
 
@@ -134,7 +134,7 @@ Auf der [Website](http://noah-nuebling.github.io/mac-mouse-fix-website/) kannst 
   
   Um das zu lösen, gibt es 2 Optionen, von denen ich weiß:
   1. Weise für eine der Tasten deiner Maus das klicken und ziehen der "Scrollen & Navigieren" Funktion zu. Diese Funktion simuliert das Wischen mit 2 Fingern auf einem Apple Trackpad. Das erlaubt dir, unter anderem, in 3D-Apps zu kreisen!
-  2. *Gebe* die mittlere Maustaste *frei*, indem du alle ihr in Mac Mouse Fix zugewiesenen Aktionen löschst. Siehe [diese Anleitung](https://github.com/noah-nuebling/mac-mouse-fix/discussions/112) für weitere Informationen.
+  2. *Gebe* die mittlere Maustaste *frei*, indem du alle ihr in Mac Mouse Fix zugewiesenen Aktionen löschst. Siehe [diese Anleitung](https://github.com/manishshanker/mac-mouse-fix-activated/discussions/112) für weitere Informationen.
 
 - **Kann ich App Exposé durch eine Klick-und-Zieh-Geste öffnen?** <!-- Hinweis: Wir verwenden hier App Exposé und in MMF Programmfenster. Nicht sicher, ob das gut ist. Ich fand das allerdings klarer. -->
 
@@ -187,7 +187,7 @@ Auf der [Website](http://noah-nuebling.github.io/mac-mouse-fix-website/) kannst 
 
   Ich ermutige jeden, den Quellcode von Mac Mouse Fix in eigenen Projekten zu verwenden, solange sie keine einfache Kopie von Mac Mouse Fix veröffentlichen.
 
-  Erfahre mehr über die Details in der [MMF License](https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License), unter der Mac Mouse Fix 3 und spätere Versionen lizenziert sind.
+  Erfahre mehr über die Details in der [MMF License](https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License), unter der Mac Mouse Fix 3 und spätere Versionen lizenziert sind.
 
 - **Kann ich Mac Mouse Fix kostenlos bekommen, wenn ich bereits gespendet habe?**
 
@@ -200,25 +200,25 @@ Schau dir die [Danksagungen]({language_root}Acknowledgements.md) an, um mehr dar
 
 - **Feedback geben**
 
-  Du kannst helfen, indem du deine **Ideen**, **Probleme** und **Rückmeldungen** über den [Feedback-Assistenten](https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report) teilst.
+  Du kannst helfen, indem du deine **Ideen**, **Probleme** und **Rückmeldungen** über den [Feedback-Assistenten](https://noah-mshank.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report) teilst.
 
 - **Geld beitragen**
   
   Ich hoffe, mich finanziell durch Mac Mouse Fix erhalten zu können. So kann ich weiter an dem Projekt arbeiten und es verbessern. Wenn du dabei helfen möchtest, kannst du:
-  1. Mac Mouse Fix kaufen, indem du auf den Button in der App klickst oder [hier](https://noahnuebling.gumroad.com/l/mmfinappusd).
+  1. Mac Mouse Fix kaufen, indem du auf den Button in der App klickst oder [hier](https://noahmshank.gumroad.com/l/mmfinappusd).
   2. Mir auf PayPal ein [Trinkgeld](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ARSTVR6KFB524&source=url&lc=en_US) geben. Ich verdiene nicht viel Geld damit, aber es ist immer nett und motivierend, eine Spende zu erhalten.
-  3. Mich auf GitHub [sponsorn](https://github.com/sponsors/noah-nuebling). Ein monatlicher Beitrag ist eine großartige Möglichkeit, das Projekt zu unterstützen und mir dabei zu helfen, ein stabileres Einkommen zu haben.
+  3. Mich auf GitHub [sponsorn](https://github.com/sponsors/noah-mshank). Ein monatlicher Beitrag ist eine großartige Möglichkeit, das Projekt zu unterstützen und mir dabei zu helfen, ein stabileres Einkommen zu haben.
 
 - **Übersetzungen hinzufügen**
   
   Mac Mouse Fix ist auf Englisch und Deutsch verfügbar, sowie den Sprachen, die in den [Danksagungen]({language_root}Acknowledgements.md) aufgelistet sind.
   
-  Wenn du **beim Übersetzen des Projekts helfen** möchtest, sieh dir das [Localization Guide](https://github.com/noah-nuebling/mac-mouse-fix/discussions/731) an.\
-  Wenn du **fehlende oder suboptimale Übersetzungen** melden möchtest, ist das auch sehr hilfreich! Die beste Art um Probleme zu melden, ist einen Kommentar unter dem [Localization Guide](https://github.com/noah-nuebling/mac-mouse-fix/discussions/731) zu hinterlassen.
+  Wenn du **beim Übersetzen des Projekts helfen** möchtest, sieh dir das [Localization Guide](https://github.com/manishshanker/mac-mouse-fix-activated/discussions/731) an.\
+  Wenn du **fehlende oder suboptimale Übersetzungen** melden möchtest, ist das auch sehr hilfreich! Die beste Art um Probleme zu melden, ist einen Kommentar unter dem [Localization Guide](https://github.com/manishshanker/mac-mouse-fix-activated/discussions/731) zu hinterlassen.
 
 - **Code beitragen**
 
-  Wenn du Code beitragen möchtest, ist das super! Ich freue mich über alle [Pull-Requests](https://github.com/noah-nuebling/mac-mouse-fix/pulls).
+  Wenn du Code beitragen möchtest, ist das super! Ich freue mich über alle [Pull-Requests](https://github.com/manishshanker/mac-mouse-fix-activated/pulls).
   
   Allerdings werde ich vielleicht nicht alle Pull-Requests akzeptieren. Wenn du sicherstellen willst, dass deine Arbeit nicht umsonst ist, kannst du einen ersten Pull-Request stellen, der nur die Änderungen *beschreibt*, die du vornehmen möchtest, jedoch keinen, oder nur wenig Code enthält. Dann kann ich dir Feedback geben und dir sagen, ob ich die Änderungen, die du vornehmen möchtest, so übernehmen würde.
 

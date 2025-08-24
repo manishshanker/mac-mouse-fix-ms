@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // ModificationUtility.m
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2020
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2020
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -178,7 +178,7 @@ BOOL directionChanged(MFDirection direction1, MFDirection direction2) {
 + (void)postMouseButton:(MFMouseButtonNumber)button down:(BOOL)down {
     
     /// I tried dispatching this event at a point other than the current cursor position, without moving the cursor.
-    /// That would maybe help with this issue:  https://github.com/noah-nuebling/mac-mouse-fix/issues/157#issuecomment-932108105)
+    /// That would maybe help with this issue:  https://github.com/manishshanker/mac-mouse-fix-activated/issues/157#issuecomment-932108105)
     /// I couldn't do it, though/ Here's what I tried:
     ///     Sending another mouse click at the original location - Only works like 1/4
     ///     Sending another mouse up event at the original location - Works exactly 1/3

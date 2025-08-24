@@ -293,8 +293,8 @@
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "oEX-Tp-9Cv"; */
 "oEX-Tp-9Cv.title" = "전체 선택";
 
-/* Class = "NSTextFieldCell"; title = "Created by Noah Nuebling"; ObjectID = "pMz-a0-1UQ"; */
-"pMz-a0-1UQ.title" = "Noah Nuebling 제작";
+/* Class = "NSTextFieldCell"; title = "Created by Noah mshank"; ObjectID = "pMz-a0-1UQ"; */
+"pMz-a0-1UQ.title" = "Noah mshank 제작";
 
 /* Class = "NSViewController"; title = "Scrolling"; ObjectID = "qcW-e9-BqR"; Note = "Scrolling Tab Title"; */
 "qcW-e9-BqR.title" = "스크롤";

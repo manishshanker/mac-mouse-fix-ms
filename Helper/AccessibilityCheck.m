@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // AccessibilityCheck.m
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2019
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2019
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -77,9 +77,9 @@ static void signal_handler(int signal_number, siginfo_t *signal_info, void *cont
             ///     This bug occured between 2.2.0 and 2.2.1 when I moved the app from a Development Signature to a proper Developer Program Signature.
             ///     Bug also maybe occurs for 3.0.0 Beta 4. Not sure why. Maybe because I changed the bundleID between those versions. Or maybe it's a different bug that just looks similar.
             /// See
-            /// - https://github.com/noah-nuebling/mac-mouse-fix/issues/415
-            /// - https://github.com/noah-nuebling/mac-mouse-fix/issues/412
-            /// - https://github.com/noah-nuebling/mac-mouse-fix/discussions/101 (Accessibility Guide)
+            /// - https://github.com/manishshanker/mac-mouse-fix-activated/issues/415
+            /// - https://github.com/manishshanker/mac-mouse-fix-activated/issues/412
+            /// - https://github.com/manishshanker/mac-mouse-fix-activated/discussions/101 (Accessibility Guide)
             
             /// Why do this in such a weird way?
             /// - We need to launch a new helper instance instead of just using the normal helper instance because `AXIsProcessTrustedWithOptions` will only add the helper to System Settings __once__ after launch. Subsequent calls don't do anything.`AXIsProcessTrustedWithOptions` is also the __only__ way to check if we already have accessibility access. And we need to check if we already have access __before__ deciding to reset the access, because we don't want to reset access if it has already been granted. So therefore we need to do the intial check and the forced system settings update in two different instances of the helper. You would think normally relaunching the helper would solve this but...
@@ -138,7 +138,7 @@ static void signal_handler(int signal_number, siginfo_t *signal_info, void *cont
     /// Validate asserts working properly
     /// Notes:
     /// - Doing this here so CocoaLumberjack is set up already. Not sure if smart decision
-    /// - It seems the NDEBUG flag is necessary to disable asserts. We hadn't had the NDEBUG flag set in 3.0.2 which contributed to a crashing issue issue where an assert was false (See: https://github.com/noah-nuebling/mac-mouse-fix/issues/988) I'm not sure when we removed the NDEBUG flag.
+    /// - It seems the NDEBUG flag is necessary to disable asserts. We hadn't had the NDEBUG flag set in 3.0.2 which contributed to a crashing issue issue where an assert was false (See: https://github.com/manishshanker/mac-mouse-fix-activated/issues/988) I'm not sure when we removed the NDEBUG flag.
     /// - I added the NDEBUG flag back to the Clang Preprocessor Macros now. I also added the NDEBUG flag to the Swift Active Compilation Conditions. Not sure what effect that has, but I think the NDEBUG flag is standard for Swift, as well so it should work fine (Not totally sure though)
     
 #if NDEBUG

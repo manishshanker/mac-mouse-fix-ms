@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -157,7 +156,7 @@
                                         <menuItem title="View Guides or Ask the Community..." id="2Uv-W7-hzJ" userLabel="View Guides or Ask the Community..." customClass="URLMenuItem">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="URLString" value="https://github.com/noah-nuebling/mac-mouse-fix/discussions"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="URLString" value="https://github.com/manishshanker/mac-mouse-fix-activated/discussions"/>
                                             </userDefinedRuntimeAttributes>
                                         </menuItem>
                                     </items>
@@ -607,7 +606,7 @@ You can also *Double Click*, *Click and Drag* and [more]().</string>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="triggerCell" horizontalHuggingPriority="1000" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="nsw-iK-CJt" userLabel="TriggerCell" customClass="RemapTableCellView" customModule="Mac_Mouse_Fix" customModuleProvider="target">
-                                                                    <rect key="frame" x="8" y="0.0" width="290" height="38"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="290" height="38"/>
                                                                     <subviews>
                                                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="999" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="QCK-nA-0gO">
                                                                             <rect key="frame" x="22" y="12" width="266" height="16"/>
@@ -645,11 +644,11 @@ You can also *Double Click*, *Click and Drag* and [more]().</string>
                                                                     </connections>
                                                                 </tableCellView>
                                                                 <tableCellView identifier="buttonGroupCell" id="pxf-x1-gL5" userLabel="ButtonGroupCell">
-                                                                    <rect key="frame" x="8" y="38" width="287" height="22"/>
+                                                                    <rect key="frame" x="8" y="38" width="287.5" height="22"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="AHZ-Kd-4Xf">
-                                                                            <rect key="frame" x="-8" y="3" width="294" height="16"/>
+                                                                            <rect key="frame" x="-8" y="3" width="295" height="16"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="16" id="iEl-dG-QM5"/>
                                                                             </constraints>
@@ -684,13 +683,13 @@ You can also *Double Click*, *Click and Drag* and [more]().</string>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="effectCell" translatesAutoresizingMaskIntoConstraints="NO" id="Epw-SW-Ew3" customClass="RemapTableCellView" customModule="Mac_Mouse_Fix" customModuleProvider="target">
-                                                                    <rect key="frame" x="312.5" y="0.0" width="223" height="39"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="223" height="39"/>
                                                                     <subviews>
                                                                         <popUpButton verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Pw9-ZH-Tb7">
                                                                             <rect key="frame" x="0.0" y="6" width="224" height="25"/>
                                                                             <popUpButtonCell key="cell" type="push" title="&lt;Mission Control and Spaces&gt;" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="4Cx-DN-qX3" id="Bar-EF-HdH">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                <font key="font" metaFont="menu"/>
+                                                                                <font key="font" metaFont="message"/>
                                                                                 <menu key="menu" autoenablesItems="NO" id="yGv-Ql-qBG">
                                                                                     <items>
                                                                                         <menuItem title="&lt;Mission Control and Spaces&gt;" state="on" id="4Cx-DN-qX3">
@@ -712,7 +711,7 @@ You can also *Double Click*, *Click and Drag* and [more]().</string>
                                                                     </constraints>
                                                                 </tableCellView>
                                                                 <tableCellView identifier="keyCaptureCell" translatesAutoresizingMaskIntoConstraints="NO" id="MzR-b1-853" customClass="RemapTableCellView" customModule="Mac_Mouse_Fix" customModuleProvider="target">
-                                                                    <rect key="frame" x="312.5" y="39" width="220" height="39"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="220" height="39"/>
                                                                     <subviews>
                                                                         <button hidden="YES" focusRingType="exterior" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="psy-Jg-KLq">
                                                                             <rect key="frame" x="-4" y="3" width="228" height="32"/>
@@ -725,14 +724,14 @@ You can also *Double Click*, *Click and Drag* and [more]().</string>
                                                                             <rect key="frame" x="3" y="10" width="214" height="20"/>
                                                                             <clipView key="contentView" focusRingType="exterior" drawsBackground="NO" id="KlB-Im-8jc">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="214" height="20"/>
-                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                <autoresizingMask key="autoresizingMask"/>
                                                                                 <subviews>
                                                                                     <textView identifier="keyCaptureView" focusRingType="exterior" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="NO" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" spellingCorrection="YES" id="piW-Ox-vLv" customClass="KeyCaptureView">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="209" height="19"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                                        <size key="minSize" width="209" height="19"/>
+                                                                                        <size key="minSize" width="211" height="19"/>
                                                                                         <size key="maxSize" width="302" height="10000000"/>
                                                                                         <attributedString key="textStorage">
                                                                                             <fragment content="Text go here">
@@ -972,7 +971,7 @@ your __Logitech M720 Triathlon__.&gt;</string>
                                                 <rect key="frame" x="84" y="-4" width="86" height="25"/>
                                                 <popUpButtonCell key="cell" type="push" title="High" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="97W-3h-SSc" id="LBG-Mq-hAQ">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="menu"/>
+                                                    <font key="font" metaFont="message"/>
                                                     <menu key="menu" id="Mvm-5t-dK8">
                                                         <items>
                                                             <menuItem title="Off" identifier="off" id="4gx-d0-WNb">
@@ -1105,7 +1104,7 @@ your __Logitech M720 Triathlon__.&gt;</string>
                                                 <rect key="frame" x="48" y="-4" width="88" height="25"/>
                                                 <popUpButtonCell key="cell" type="push" title="macOS" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fW3-4Q-yB8" id="4Es-L9-Mle">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="menu"/>
+                                                    <font key="font" metaFont="message"/>
                                                     <menu key="menu" id="RH4-UE-BzP">
                                                         <items>
                                                             <menuItem title="macOS" state="on" identifier="system" id="fW3-4Q-yB8">
@@ -1582,7 +1581,7 @@ your __Logitech M720 Triathlon__.&gt;</string>
                                                 <rect key="frame" x="-3" y="31" width="194" height="25"/>
                                                 <popUpButtonCell key="cell" type="push" title="Off" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="PdO-dH-G7Y" id="QLj-t5-G1g">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="menu"/>
+                                                    <font key="font" metaFont="message"/>
                                                     <menu key="menu" id="67a-6w-UBx">
                                                         <items>
                                                             <menuItem title="Off" state="on" identifier="off" id="PdO-dH-G7Y">
@@ -1782,8 +1781,8 @@ System Preferences &gt; Mouse &gt; Tracking speed </string>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <textField focusRingType="none" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="5x2-rm-Zzf">
-                                                <rect key="frame" x="1056" y="0.0" width="147" height="14"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Created by Noah Nuebling" id="pMz-a0-1UQ">
+                                                <rect key="frame" x="1059" y="0.0" width="140" height="14"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Created by Noah mshank" id="pMz-a0-1UQ">
                                                     <font key="font" metaFont="menu" size="11"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1823,7 +1822,7 @@ System Preferences &gt; Mouse &gt; Tracking speed </string>
                                                 <rect key="frame" x="282" y="0.0" width="847" height="50"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="tsR-bT-Bpt">
-                                                        <rect key="frame" x="3" y="15.5" width="20" height="20"/>
+                                                        <rect key="frame" x="4" y="15.5" width="18" height="20"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" id="yRU-7Y-mLd">
                                                             <imageReference key="image" image="exclamationmark.shield" catalog="system" symbolScale="default"/>
                                                         </imageCell>
@@ -1840,7 +1839,7 @@ System Preferences &gt; Mouse &gt; Tracking speed </string>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="href" value="https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="href" value="https://noah-mshank.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                                                 <integer key="value" value="30"/>
                                                             </userDefinedRuntimeAttribute>
@@ -1887,7 +1886,7 @@ System Preferences &gt; Mouse &gt; Tracking speed </string>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="href" value="https://github.com/noah-nuebling/mac-mouse-fix/"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="href" value="https://github.com/manishshanker/mac-mouse-fix-activated/"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                                                 <integer key="value" value="30"/>
                                                             </userDefinedRuntimeAttribute>
@@ -1953,7 +1952,7 @@ System Preferences &gt; Mouse &gt; Tracking speed </string>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="href" value="https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=feature-request"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="href" value="https://noah-mshank.github.io/mac-mouse-fix-feedback-assistant/?type=feature-request"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                                                 <integer key="value" value="30"/>
                                                             </userDefinedRuntimeAttribute>
@@ -2098,7 +2097,7 @@ System Preferences &gt; Mouse &gt; Tracking speed </string>
                                                 <rect key="frame" x="1270" y="0.0" width="706" height="50"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="BDB-tM-gQU">
-                                                        <rect key="frame" x="6" y="16" width="14.5" height="19"/>
+                                                        <rect key="frame" x="6" y="16.5" width="14.5" height="19"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" id="B37-zq-ffR">
                                                             <imageReference key="image" image="questionmark" catalog="system" symbolScale="default"/>
                                                         </imageCell>
@@ -2115,7 +2114,7 @@ System Preferences &gt; Mouse &gt; Tracking speed </string>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="href" value="https://github.com/noah-nuebling/mac-mouse-fix/discussions/categories/guides"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="href" value="https://github.com/manishshanker/mac-mouse-fix-activated/discussions/categories/guides"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                                                 <integer key="value" value="30"/>
                                                             </userDefinedRuntimeAttribute>
@@ -2195,7 +2194,7 @@ System Preferences &gt; Mouse &gt; Tracking speed </string>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="href" value="https://github.com/noah-nuebling/mac-mouse-fix/blob/master/Acknowledgements.md"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="href" value="https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/Acknowledgements.md"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                                                 <integer key="value" value="30"/>
                                                             </userDefinedRuntimeAttribute>
@@ -2246,7 +2245,7 @@ System Preferences &gt; Mouse &gt; Tracking speed </string>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                                                 <integer key="value" value="30"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="href_future" value="https://github.com/sponsors/noah-nuebling"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="href_future" value="https://github.com/sponsors/noah-mshank"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                 </subviews>
@@ -2463,7 +2462,7 @@ System Preferences &gt; Mouse &gt; Tracking speed </string>
         <image name="arrow.uturn.backward.circle.fill" catalog="system" width="15" height="15"/>
         <image name="calendar" catalog="system" width="16" height="14"/>
         <image name="cursorarrow" catalog="system" width="11" height="16"/>
-        <image name="exclamationmark.shield" catalog="system" width="16" height="15"/>
+        <image name="exclamationmark.shield" catalog="system" width="14" height="15"/>
         <image name="gearshape" catalog="system" width="16" height="16"/>
         <image name="hands.sparkles" catalog="system" width="18" height="20"/>
         <image name="heart.text.square" catalog="system" width="15" height="14"/>

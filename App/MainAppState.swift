@@ -22,7 +22,7 @@ import ReactiveSwift
     @objc var window: ResizingTabWindow? {
         
         /// Notes:
-        ///     Not sure what we're doing here. `NSApp.mainWindow` was nil under obscure circumstances (see https://github.com/noah-nuebling/mac-mouse-fix/issues/735) so we added the windowController stuff.
+        ///     Not sure what we're doing here. `NSApp.mainWindow` was nil under obscure circumstances (see https://github.com/manishshanker/mac-mouse-fix-activated/issues/735) so we added the windowController stuff.
         
         var result = ResizingTabWindowController.window
         if result == nil {

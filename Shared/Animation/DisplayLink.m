@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // DisplayLink.m
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2021
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2021
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -71,7 +71,7 @@ typedef enum {
         
         /// Setup queue
         dispatch_queue_attr_t attrs = dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_USER_INTERACTIVE, -1);
-        _displayLinkQueue = dispatch_queue_create("com.nuebling.mac-mouse-fix.helper.display-link", attrs); /// TODO: Remove .helper from the queue name. This is used in the mainApp, too.
+        _displayLinkQueue = dispatch_queue_create("com.mshank.mac-mouse-fix.helper.display-link", attrs); /// TODO: Remove .helper from the queue name. This is used in the mainApp, too.
         
         /// Setup internal CVDisplayLink
         [self setUpNewDisplayLinkWithActiveDisplays];
@@ -562,13 +562,13 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
         ///         - Note on dispatch_after: I was worried that using `dispatch_after` would have worse performance than executing directly on the 'high performance display link thread' which the CVDisplayLink callback apparently runs on. But this doesn't seem to matter. From my observations (didn't reproduce this several times, so not 100% sure), using `dispatch_after`, it looks like the code we dispatch to consistently finishes within 2 ms of the preceding frame (Or more than 14 ms before the next frame). Even when there is heavy scroll stuttering in Safari. So using `dispatch_after` should be more than accurate and fast enough, and the stuttering seems to be caused by scheduling issues/issues in Safari.
         ///
         /// - Update after 3.0.2 release
-        ///     - See this GH Issue by V-Coba: https://github.com/noah-nuebling/mac-mouse-fix/issues/875
+        ///     - See this GH Issue by V-Coba: https://github.com/manishshanker/mac-mouse-fix-activated/issues/875
         ///     - These change from 3.0.2 didn't really help in Safari. Sometimes MMF is smooth and the trackpad stutters, but sometimes the trackpad stutters and MMF is smooth. In Firefox, these changes seem to have created additional stutters, and it was very smooth before. So our experiment was unsuccessful. (And we shouldn't have published it in a stable release)
         ///     - We created two alternative builds: 3.0.2-v-coba and 3.0.2-v-coba-2. The original 3.0.2 build's scheduling (right after a frame) made things noticably worse in Firefox, and I got several feedbacks that scrolling was more stuttery. The first `v-coba` build went back to the native schduling (right before the frame), and restored the original performance characteristics. The `v-coba-2` build tried alternative scheduling optimized to get the best perfromance for scrolling on Reddit in Safari on my M1 MBA. However, in some situations, I observed it having more stutters on light websites like GitHub.
         ///         - Overall, I'm not sure which of the builds is better on average, they all stutter at times. But the original scheduling at least seemed to be stutter free on Firefox. While the 3.0.2 scheduling is not stutter free on Firefox anymore. For the `v-coba-2` scheduling, I haven't tested how it works with Firefox.
         ///         -> I think for now, **it's best to go back to the original scheduling**, since I'm confident that it's good on Firefox, and I'm not confident in the benefits of the 2 other schedulings we tried.
-        ///             - See this comment for further discussion of this decisin: https://github.com/noah-nuebling/mac-mouse-fix/issues/875#issuecomment-2016869451
-        ///         -> Maybe later, we can explore trying to analyze the CVDisplayLinkThread of the scrolled app in order to improve scheduling. That's the best idea I have right now. See https://github.com/noah-nuebling/mac-mouse-fix/issues/875#issuecomment-1986811798 for more info and potential libraries we could use to achieve this.
+        ///             - See this comment for further discussion of this decisin: https://github.com/manishshanker/mac-mouse-fix-activated/issues/875#issuecomment-2016869451
+        ///         -> Maybe later, we can explore trying to analyze the CVDisplayLinkThread of the scrolled app in order to improve scheduling. That's the best idea I have right now. See https://github.com/manishshanker/mac-mouse-fix-activated/issues/875#issuecomment-1986811798 for more info and potential libraries we could use to achieve this.
 
         
         /// Get timestamp for start of callback
@@ -722,7 +722,7 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
                 workload(timeInfo);
             });
         } else {
-            DDLogError(@"Don't use special scheduling without extensive testing. This caused regressions in scrolling stutteriness in some scenarios and even crashes I think (See 3.0.2-vcoba stuff: https://github.com/noah-nuebling/mac-mouse-fix/issues/875, and 3.0.2 crashes: https://github.com/noah-nuebling/mac-mouse-fix/issues/988)");
+            DDLogError(@"Don't use special scheduling without extensive testing. This caused regressions in scrolling stutteriness in some scenarios and even crashes I think (See 3.0.2-vcoba stuff: https://github.com/manishshanker/mac-mouse-fix-activated/issues/875, and 3.0.2 crashes: https://github.com/manishshanker/mac-mouse-fix-activated/issues/988)");
             assert(false);
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*workDelay), self->_displayLinkQueue, ^{ /// Schedule the workload to run after `workDelay`
                 workload(timeInfo);
@@ -888,10 +888,10 @@ ParsedCVTimeStamp parseTimeStamp(const CVTimeStamp *ts) {
     ///
     /// Conclusion:
     /// - So far I haven't found a way to access the framebuffer stuff directly. It might be possible with private APIs, even on M1 Macs running the latest macOS version, but it's probably quite difficult.
-    ///     - I'm pretty sure I have not found a way to access the framebuffer but I'm not 100% sure. It's been over a month between writing the code and writing these comments. Also see this GitHub comment I wrote as evidence that I haven't found a way: https://github.com/noah-nuebling/mac-mouse-fix/issues/875#issuecomment-1986394616
+    ///     - I'm pretty sure I have not found a way to access the framebuffer but I'm not 100% sure. It's been over a month between writing the code and writing these comments. Also see this GitHub comment I wrote as evidence that I haven't found a way: https://github.com/manishshanker/mac-mouse-fix-activated/issues/875#issuecomment-1986394616
     /// - Accessing the framebuffer directly to get the vsync times would only help us if the timestamps that the CVDisplayLinkCallback receives from the system are not already giving us the correct vsync times. AND if, on top of that, bad syncing between our CGEvent-sending and the monitors' vsync is even the factor that causes the stuttering in the first place.
-    ///     - From my observations, I lean towards thinking that these 2 factors are not the cause of the stuttering. Instead, I think that the problem is more likely bad syncing between the invocation time of the CVDisplayLinkCallbacks inside scrolled apps like Safari, with the send-time of the scroll events from MMF. I explain this theory more in this GitHub comment: https://github.com/noah-nuebling/mac-mouse-fix/issues/875#issuecomment-1986797450
-    /// -> So since accessing the framebuffer is hard and I don't expect it to help us, **we gave up on trying to access the framebuffer**. Instead we planned to use system APIs to try and understand how the CVDisplayLinkCallback invocations are scheduled inside the scrolled app (like Safari), and to then schedule our event-sending relative to that. See this GitHub comment for more info: https://github.com/noah-nuebling/mac-mouse-fix/issues/875#issuecomment-1986811798
+    ///     - From my observations, I lean towards thinking that these 2 factors are not the cause of the stuttering. Instead, I think that the problem is more likely bad syncing between the invocation time of the CVDisplayLinkCallbacks inside scrolled apps like Safari, with the send-time of the scroll events from MMF. I explain this theory more in this GitHub comment: https://github.com/manishshanker/mac-mouse-fix-activated/issues/875#issuecomment-1986797450
+    /// -> So since accessing the framebuffer is hard and I don't expect it to help us, **we gave up on trying to access the framebuffer**. Instead we planned to use system APIs to try and understand how the CVDisplayLinkCallback invocations are scheduled inside the scrolled app (like Safari), and to then schedule our event-sending relative to that. See this GitHub comment for more info: https://github.com/manishshanker/mac-mouse-fix-activated/issues/875#issuecomment-1986811798
     
     ///
     /// Open IOService for this displays framebuffer

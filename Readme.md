@@ -1,4 +1,4 @@
-# Mac Mouse Fix Activated is a fork of [Mac Mouse Fix](https://github.com/noah-nuebling/mac-mouse-fix)
+# Mac Mouse Fix Activated is a fork of [Mac Mouse Fix](https://github.com/manishshanker/mac-mouse-fix-activated)
 
 This fork changes the license checking file to always be activated. This way you can use Mac Mouse Fix without having to pay, even though you totally should support the developer by buying the app.
 
@@ -17,6 +17,6 @@ These are the steps you need to follow to build the app:
 8. At the left side under Targets, select "Mac Mouse Fix Helper".
 9. Change the Team to your own account.
 10. Change the Bundle Identifier to `com.<your_name>.mac-mouse-fix.helper`.
-11. On the menubar at the top, select **Find > Find and Replace in Project...** and replace every entry of "nuebling" with the name you used for the identifier.
+11. On the menubar at the top, select **Find > Find and Replace in Project...** and replace every entry of "mshank" with the name you used for the identifier.
 12. On the menubar at the top, select **Product > Archive** and wait for Xcode to build the app.
 13. Click on **Distribute App > Custom > Copy App** and select where you want the compiled **.app** file to be saved.

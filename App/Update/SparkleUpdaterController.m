@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // SparkleUpdateDelegate.m
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2021
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2021
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -70,7 +70,7 @@ int getMajorVersion(NSString *version) {
     ///     - Note from old implementation: I think it's better without this, since even without this, the user will be prompted to update to next major version. And if they skip it, they will instead see minor version updates. That's good enough and consistent, and we won't have to have some up-to-date database about which updates are free/paid.
 
     /// Discussion:
-    /// - Discussion/brainstorming for custom logic: https://github.com/noah-nuebling/mac-mouse-fix/issues/962#issuecomment-2120238813
+    /// - Discussion/brainstorming for custom logic: https://github.com/manishshanker/mac-mouse-fix-activated/issues/962#issuecomment-2120238813
     /// - As far as I understand, the `appcast` arg is already prefiltered by Sparkle using stuff like skippedUpdates, minimumAutoupdateVersion and minimumOSVersion.
     ///   Also, as far as I understand, the default implementation of this method simply uses [delegate versionComparator] (which defaults to a `SUStandardVersionComparator`) to get the appCast item with the highest version.
     ///     - I base these assumptions the following Sparkle 2 source code (we're using Sparkle 1.26.0 at the time of writing, but I hope nothing drastic changed): https://github.com/sparkle-project/Sparkle/blob/2247105ff37ba7b317e65af9833ecbb0f67f81de/Sparkle/SUAppcastDriver.m#L230
@@ -81,7 +81,7 @@ int getMajorVersion(NSString *version) {
     /// - It might be slightly nice to delete the users' choice about skipping major versions when a new major version of the app is launched for the first time.
     ///     - Otherwise, there could be some slighlyyy inconsistent behavior where: You're on 2.0.0. You skip the 2.2.3 minor update. Then you update to 3.0.0, and then you skip the 3.0.2 minor update. Then you downgrade to 2.0.0. Your choice about skipping the 2.2.3 update has been deleted, and you're presented with 2.2.3 update a second time. This isn't bad in itself. But here's the inconsistency: If you didn't skip any minor updates while you were on MMF 3, then your choice about skipping the 2.2.3 update wouldn't have been deleted, and you wouldn't have been presented the 2.2.3 update a second time after downgrading to MMF 2.0.0. That's sort of strange. But I don't think it matters.
     ///     - 'Fixing' this this would require us to introduce a new `launchesOfCurrentMajorVersion` variable in AppDelegate, analogous to the `launchesOfCurrentBundleVersion` variable. But I don't think it's worth it.
-    /// - The original design for our`bestValidUpdateInAppcast:` logic (which I more or less outlined [here](https://github.com/noah-nuebling/mac-mouse-fix/issues/962#issuecomment-2120238813) and which was implemented in older commits) was implemented in a more complicated way, but should behave mostly the same. The problems that made me think of this new solution, and which this new solution fixes is this:
+    /// - The original design for our`bestValidUpdateInAppcast:` logic (which I more or less outlined [here](https://github.com/manishshanker/mac-mouse-fix-activated/issues/962#issuecomment-2120238813) and which was implemented in older commits) was implemented in a more complicated way, but should behave mostly the same. The problems that made me think of this new solution, and which this new solution fixes is this:
     ///     1. In the old implementation, if you skipped a minor version, and then downgraded to a previous major version, you would't receive any minor updates. That's because if you skipped a minor update, all updates with a lower build number would not be presented to the user anymore.
     ///     2. If you skipped a major update, and then manually downloaded a new major version, then that new major version also wouldn't present any major updates to itself to the user. That's because we only used to store a piece of state saying userDidSkipAMajorUpdate, with no way to differentiate, which major update was skipped.
     ///     -> I won't explain the details, but this new implementation - aside from being easier to read - should fix both of these issues.

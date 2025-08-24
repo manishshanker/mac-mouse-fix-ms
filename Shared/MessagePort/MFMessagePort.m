@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // MFMessagePort.m
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2021
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2021
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -191,7 +191,7 @@ static CFDataRef _Nullable didReceiveMessage(CFMessagePortRef port, SInt32 messa
     DDLogInfo(@"Created localPort: %@", localPort);
     
     /// Setting the name here instead of when creating the port creates some super weird behavior, too.
-//    CFMessagePortSetName(localPort, CFSTR("com.nuebling.mousefix.port"));
+//    CFMessagePortSetName(localPort, CFSTR("com.mshank.mousefix.port"));
     
     
     if (localPort != NULL) {
@@ -202,7 +202,7 @@ static CFDataRef _Nullable didReceiveMessage(CFMessagePortRef port, SInt32 messa
         
         /// Notes from Helper:
         /// CFMessagePortCreateRunLoopSource() used to crash when another instance of MMF Helper was already running.
-        /// It would log this: `*** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x1b03, name = 'com.nuebling.mac-mouse-fix.helper'`
+        /// It would log this: `*** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x1b03, name = 'com.mshank.mac-mouse-fix.helper'`
         /// I think the reason for this messate is that the existing instance would already 'occupy' the kMFBundleIDHelper name.
         /// Checking if `localPort != nil` should detect this case
         

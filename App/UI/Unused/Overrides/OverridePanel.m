@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // ScrollOverride.m
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2020
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2020
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -223,7 +223,7 @@ NSDictionary *_columnIdentifierToKeyPath;
                 appName = [[NSBundle bundleWithPath:appPath] objectForInfoDictionaryKey:@"CFBundleName"];
                 
                 /// Fallbacks
-                ///     Starcraft has no name. See https://github.com/noah-nuebling/mac-mouse-fix/issues/241
+                ///     Starcraft has no name. See https://github.com/manishshanker/mac-mouse-fix-activated/issues/241
                 if (appName == nil) {
                     if (appPath != nil) {
                         appName = [[NSURL fileURLWithPath:appPath] URLByDeletingPathExtension].lastPathComponent;

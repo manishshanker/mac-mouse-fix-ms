@@ -1,9 +1,9 @@
 //
 // --------------------------------------------------------------------------
 // PointerFreeze.m
-// Created for Mac Mouse Fix (https://github.com/noah-nuebling/mac-mouse-fix)
-// Created by Noah Nuebling in 2022
-// Licensed under the MMF License (https://github.com/noah-nuebling/mac-mouse-fix/blob/master/License)
+// Created for Mac Mouse Fix (https://github.com/manishshanker/mac-mouse-fix-activated)
+// Created by Noah mshank in 2022
+// Licensed under the MMF License (https://github.com/manishshanker/mac-mouse-fix-activated/blob/master/License)
 // --------------------------------------------------------------------------
 //
 
@@ -58,7 +58,7 @@ static int64_t _lastEventDelta;
         
         /// Setup queue
         dispatch_queue_attr_t attr = dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_USER_INTERACTIVE, -1);
-        _queue = dispatch_queue_create("com.nuebling.mac-mouse-fix.helper.pointer", attr);
+        _queue = dispatch_queue_create("com.mshank.mac-mouse-fix.helper.pointer", attr);
         
         if (NSThread.isMainThread) {
             _puppetCursorView = [[NSImageView alloc] init];
